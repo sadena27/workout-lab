@@ -2,7 +2,7 @@ import './App.css';
 import Navbar from './Navbar';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Homepage from './Homepage';
-import Workouts from './Workouts';
+import Exercises from './Exercises';
 import Workout_Creator from './Workout-Creator';
 
 function App() {
@@ -12,7 +12,7 @@ function App() {
         <Navbar/>
         <Switch>
           <Route exact path="/" component={Homepage}/>
-          <Route exact path="/workouts" component={Workouts}/>
+          <Route exact path="/exercises" component={Exercises}/>
           <Route exact path="/workout-creator" component={Workout_Creator}/>
         </Switch>
       </div>

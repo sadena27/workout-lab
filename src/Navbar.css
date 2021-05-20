@@ -5,29 +5,18 @@
     position: fixed;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
     padding: 15px 30px 10px 30px;
     border-bottom: 1px solid #d3d3d3;
     top: 0;
     width: 96%;
 }
 
-.navbar__title {
-    color: #3f8efc;
-    text-decoration: none;
-}
-
 .navbar__options {
-    float: right;
-    padding-left: 50px;
     color: #3f8efc;
     text-decoration: none;
 }
-
-.navbar__title:hover {
-    color: #2667ff;
-  }
   
 .navbar__options:hover {
-color: #2667ff;
+color: #afbed1;
 }
