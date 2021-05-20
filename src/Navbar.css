@@ -1,11 +1,15 @@
 .navbar {
+    background-color: white;
     font-family: Tahoma;
     font-size: 18pt;
+    position: fixed;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 15px 30px 10px 30px;
     border-bottom: 1px solid #d3d3d3;
+    top: 0;
+    width: 96%;
 }
 
 .navbar__title {
