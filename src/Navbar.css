@@ -10,6 +10,7 @@
     border-bottom: 1px solid #d3d3d3;
     top: 0;
     width: 96%;
+    z-index: 100;
 }
 
 .navbar__options {
