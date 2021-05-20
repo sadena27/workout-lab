@@ -1,6 +1,6 @@
 .navbar {
     background-color: white;
-    font-family: Tahoma;
+    font-family: Verdana, sans-serif;
     font-size: 18pt;
     position: fixed;
     display: flex;
@@ -15,8 +15,10 @@
 .navbar__options {
     color: #3f8efc;
     text-decoration: none;
+    font-weight: bold;
+    transform: scale(1, 1.1);
 }
   
 .navbar__options:hover {
-color: #afbed1;
+color: #2667ff;
 }
