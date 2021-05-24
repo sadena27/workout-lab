@@ -1,7 +1,7 @@
 .navbar {
     background-color: white;
     font-family: Verdana, sans-serif;
-    font-size: 18pt;
+    font-size: 14pt;
     position: fixed;
     display: flex;
     align-items: center;
@@ -15,11 +15,16 @@
 
 .navbar__options {
     color: #3f8efc;
-    text-decoration: none;
+    text-decoration: underline transparent;
+    text-underline-offset: 5px;
+    text-decoration-thickness: 2px;
     font-weight: bold;
     transform: scale(1, 1.1);
+    transition: text-decoration 300ms ease-in-out;
 }
   
 .navbar__options:hover {
-color: #2667ff;
+    text-decoration: underline;
+    text-underline-offset: 5px;
+    text-decoration-thickness: 2px;
 }
