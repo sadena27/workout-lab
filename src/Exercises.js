@@ -27,6 +27,50 @@ const exercises = [
     {
         info: {name: 'EZ-Bar Curl', muscles: ['biceps', 'biceps', 'forearm']},
         link: "https://www.w3schools.com/"
+    },
+    {
+        info: {name: 'EZ-Bar Curl', muscles: ['biceps', 'biceps', 'forearm']},
+        link: "https://www.w3schools.com/"
+    },
+    {
+        info: {name: 'EZ-Bar Curl', muscles: ['biceps', 'biceps', 'forearm']},
+        link: "https://www.w3schools.com/"
+    },
+    {
+        info: {name: 'EZ-Bar Curl', muscles: ['biceps', 'biceps', 'forearm']},
+        link: "https://www.w3schools.com/"
+    },
+    {
+        info: {name: 'EZ-Bar Curl', muscles: ['biceps', 'biceps', 'forearm']},
+        link: "https://www.w3schools.com/"
+    },
+    {
+        info: {name: 'EZ-Bar Curl', muscles: ['biceps', 'biceps', 'forearm']},
+        link: "https://www.w3schools.com/"
+    },
+    {
+        info: {name: 'EZ-Bar Curl', muscles: ['biceps', 'biceps', 'forearm']},
+        link: "https://www.w3schools.com/"
+    },
+    {
+        info: {name: 'EZ-Bar Curl', muscles: ['biceps', 'biceps', 'forearm']},
+        link: "https://www.w3schools.com/"
+    },
+    {
+        info: {name: 'EZ-Bar Curl', muscles: ['biceps', 'biceps', 'forearm']},
+        link: "https://www.w3schools.com/"
+    },
+    {
+        info: {name: 'EZ-Bar Curl', muscles: ['biceps', 'biceps', 'forearm']},
+        link: "https://www.w3schools.com/"
+    },
+    {
+        info: {name: 'EZ-Bar Curl', muscles: ['biceps', 'biceps', 'forearm']},
+        link: "https://www.w3schools.com/"
+    },
+    {
+        info: {name: 'EZ-Bar Curl', muscles: ['biceps', 'biceps', 'forearm']},
+        link: "https://www.w3schools.com/"
     }
 ]
 
