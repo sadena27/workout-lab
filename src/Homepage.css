@@ -1,0 +1,23 @@
+.homepage {
+    font-family: Archivo, sans-serif;
+    background-color: gray;
+    height: 100vh;
+    margin-top: -15px;
+    padding: 15px 40px;
+    color: white;
+}
+
+.homepage h1 {
+    font-size: 45px;
+    text-align: center;
+}
+
+.homepage h3 {
+    text-align: center;
+    font-weight: normal;
+}
+
+.homepage p {
+    text-align: center;
+    font-weight: normal;
+}
