@@ -46,6 +46,8 @@
     text-decoration-thickness: 2px;
     font-weight: bold;
     transition: text-decoration 300ms ease-in-out;
+    top: -20px;
+
 }
   
 .navbar-menu__items:hover {
@@ -64,7 +66,15 @@
     }
 
     .navbar-menu {
-        display: none;
+        display: block;
+        text-align: end;
+        padding: 25px 50px 5px 0px;
+        height: 0px;
+        margin-top: -69px;
+    }
+
+    .navbar-menu__items {
+        margin-right: 50px;
     }
 
     .navbar-pages {
@@ -72,11 +82,10 @@
         text-align: center;
         float: right;
         padding: 25px 50px 5px 0px;
-        /* overflow: hidden; */
     }
 
     .navbar-pages__items {
-        padding-left: 50px;
+        margin-left: 50px;
         text-align: center;
         color: white;
         text-decoration: underline transparent;
@@ -84,6 +93,8 @@
         text-decoration-thickness: 2px;
         font-weight: bold;
         transition: text-decoration 300ms ease-in-out;
+        padding-top: 15px;
+        background-color: #3f8efc;
     }
       
     .navbar-pages__items:hover {
