@@ -3,13 +3,14 @@
 }
 
 .intro {
-    padding: 100px 103px;
+    padding: 12% 0px 0vh 103px;
     color: white;
     background-image: url('homepage_background.jpg');
     background-color: black;
-    background-size: 50%;
-    background-position: 95% 20%;
+    background-size: 60%;
+    background-position: 100% 35%;
     background-repeat: no-repeat;
+    height: 70vh;
 }
 
 .intro h1 {
@@ -42,17 +43,19 @@
 .exploreBox {
     display: flex;
     justify-content: center;
+    align-items: center;
     background-color: #87bfff;
-    padding: 70px;
+    padding: 85px;
+    height: 72vh;
 }
 
 .exploreBox_card {
-    width: 350px;
-    height: 350px;
+    width: 425px;
+    height: 425px;
     background-color: #aaaaaa;
     font-size: 45px;
     border-radius: 20px;
-    margin: 10px 40px;
+    margin: 10px 60px;
     color: white;
     display: flex;
     justify-content: center;
@@ -65,9 +68,9 @@
     justify-content: center;
     align-items: center;
     background-image: url('exercise_card.png');
-    background-size: 530px 354px;
-    height: 350px;
-    width: 350px;
+    background-size: 140% 100%;
+    height: inherit;
+    width: inherit;
     background-repeat: no-repeat;
     background-position: center;
     border-radius: inherit;
@@ -79,9 +82,9 @@
     justify-content: center;
     align-items: center;
     background-image: url('workout_card.png');
-    background-size: 508px 382px;
-    height: 350px;
-    width: 350px;
+    background-size: 130% 100%;
+    height: inherit;
+    width: inherit;
     background-repeat: no-repeat;
     background-position: center;
     border-radius: inherit;
@@ -93,9 +96,9 @@
     width: 250px;
     color: white;
     padding-bottom: 10px;
-    transition: text-shadow 500ms ease-in-out;
 }
 
-.exploreCardText:hover {
-    text-shadow: 2px 2px 2px #3f8efc;
+#learnMore {
+    height: 85vh;
+    padding: 30px 103px;
 }
