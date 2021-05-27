@@ -1,14 +1,32 @@
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom';
 import './Homepage.css';
 
 function Homepage() {
     return (
         <div className="homepage">
-            <h1>Welcome to the Workout Lab</h1>
-            <p>The center for achieving your workout goals.</p>
-            <h3>Discover new exercises</h3>
-            <h3>Build custom workouts</h3>
-            <h3>Target specific muscles</h3>
+            <div className="intro">
+                <h1>WELCOME TO THE WORKOUT LAB.</h1>
+                <p>The center for achieving your workout goals.</p>
+                <a href="#learnMore" className="intro__button">Learn more</a>
+                <Link to="/sign-in" className="intro__button">Sign In</Link>
+            </div>
+            <div className="exploreBox">
+                <div className="exploreBox_card">
+                    <div className="exploreBox_card_exercise">
+                        <Link to="/exercises" className="exploreCardText">EXPLORE EXERCISES</Link>
+                    </div>
+                </div>
+                <div className="exploreBox_card">
+                    <div className="exploreBox_card_workout">
+                        <Link to="/workout-creator" className="exploreCardText">BUILD CUSTOM WORKOUTS</Link>
+                    </div>
+                </div>
+            </div>
+            <div id="learnMore">
+                <h1> LEARN MORE</h1>
+                <p>This is where you can learn more about workout lab.</p>
+            </div>
         </div>
     )
 }
