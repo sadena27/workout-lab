@@ -3,14 +3,26 @@
 }
 
 .intro {
-    padding: 12% 0px 0vh 103px;
     color: white;
-    background-image: url('homepage_background.jpg');
     background-color: black;
-    background-size: 60%;
-    background-position: 100% 35%;
-    background-repeat: no-repeat;
-    height: 70vh;
+    height: 90vh;
+    display: flex;
+    flex-flow: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.intro__info {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.intro img {
+    max-width: 55%;
+    width: auto;
+    height: auto;
+    display: block;
+    float: right;
 }
 
 .intro h1 {
@@ -29,11 +41,11 @@
 .intro__button {
     color: #3f8efc;
     text-decoration: none;
-    margin-left: 60px;
     border: 1px solid;
     padding: 10px;
     border-radius: 10px;
     font-size: 20px;
+    margin: 0px 20px;
 }
 
 .intro__button:hover {
@@ -44,9 +56,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #87bfff;
-    padding: 85px;
-    height: 72vh;
+    flex-flow: wrap;
+    background-color: #4974a5;
+    min-height: 94vh;
+    height: auto;
+    padding: 15px 0px;
 }
 
 .exploreBox_card {
@@ -99,6 +113,7 @@
 }
 
 #learnMore {
+    background-color: #E5ECF4;
     height: 85vh;
     padding: 30px 103px;
 }
