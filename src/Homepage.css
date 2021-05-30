@@ -13,7 +13,6 @@
 }
 
 .intro__info {
-    margin-bottom: 30px;
     text-align: center;
 }
 
@@ -57,7 +56,7 @@
     justify-content: center;
     align-items: center;
     flex-flow: wrap;
-    background-color: #4974a5;
+    background-color: #999da2;
     min-height: 94vh;
     height: auto;
     padding: 15px 0px;
@@ -69,11 +68,10 @@
     background-color: #aaaaaa;
     font-size: 45px;
     border-radius: 20px;
-    margin: 10px 60px;
-    color: white;
-    display: flex;
+    margin: 10px 60px;    display: flex;
     justify-content: center;
     align-items: center;
+    box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.5);
 }
 
 .exploreBox_card_exercise {
@@ -85,7 +83,6 @@
     background-size: 140% 100%;
     height: inherit;
     width: inherit;
-    background-repeat: no-repeat;
     background-position: center;
     border-radius: inherit;
 }
@@ -99,7 +96,6 @@
     background-size: 130% 100%;
     height: inherit;
     width: inherit;
-    background-repeat: no-repeat;
     background-position: center;
     border-radius: inherit;
 }
