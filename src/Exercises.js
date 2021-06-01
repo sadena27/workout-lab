@@ -3,119 +3,63 @@ import Model from 'react-body-highlighter';
 import './Exercises.css';
 import axios from 'axios';
 
-const exercises = [
-    {
-        info: {name: 'Biceps Curl', muscles: ['biceps', 'biceps', 'forearm']},
-        link: "https://www.w3schools.com/"
-    },
-    {
-        info: {name: 'Hammer Curl', muscles: ['biceps', 'biceps', 'forearm']},
-        link: "https://www.w3schools.com/"
-    },
-    {
-        info: {name: 'Incline Dumbell Curl', muscles: ['biceps', 'biceps', 'forearm']},
-        link: "https://www.w3schools.com/"
-    },
-    {
-        info: {name: 'Barbell Curl', muscles: ['biceps', 'biceps', 'forearm']},
-        link: "https://www.w3schools.com/"
-    },
-    {
-        info: {name: 'Seated Biceps Curl', muscles: ['biceps', 'biceps', 'forearm']},
-        link: "https://www.w3schools.com/"
-    },
-    {
-        info: {name: 'EZ-Bar Curl', muscles: ['biceps', 'biceps', 'forearm']},
-        link: "https://www.w3schools.com/"
-    },
-    {
-        info: {name: 'EZ-Bar Curl', muscles: ['biceps', 'biceps', 'forearm']},
-        link: "https://www.w3schools.com/"
-    },
-    {
-        info: {name: 'EZ-Bar Curl', muscles: ['biceps', 'biceps', 'forearm']},
-        link: "https://www.w3schools.com/"
-    },
-    {
-        info: {name: 'EZ-Bar Curl', muscles: ['biceps', 'biceps', 'forearm']},
-        link: "https://www.w3schools.com/"
-    },
-    {
-        info: {name: 'EZ-Bar Curl', muscles: ['biceps', 'biceps', 'forearm']},
-        link: "https://www.w3schools.com/"
-    },
-    {
-        info: {name: 'EZ-Bar Curl', muscles: ['biceps', 'biceps', 'forearm']},
-        link: "https://www.w3schools.com/"
-    },
-    {
-        info: {name: 'EZ-Bar Curl', muscles: ['biceps', 'biceps', 'forearm']},
-        link: "https://www.w3schools.com/"
-    },
-    {
-        info: {name: 'EZ-Bar Curl', muscles: ['biceps', 'biceps', 'forearm']},
-        link: "https://www.w3schools.com/"
-    },
-    {
-        info: {name: 'EZ-Bar Curl', muscles: ['biceps', 'biceps', 'forearm']},
-        link: "https://www.w3schools.com/"
-    },
-    {
-        info: {name: 'EZ-Bar Curl', muscles: ['biceps', 'biceps', 'forearm']},
-        link: "https://www.w3schools.com/"
-    },
-    {
-        info: {name: 'EZ-Bar Curl', muscles: ['biceps', 'biceps', 'forearm']},
-        link: "https://www.w3schools.com/"
-    },
-    {
-        info: {name: 'EZ-Bar Curl', muscles: ['biceps', 'biceps', 'forearm']},
-        link: "https://www.w3schools.com/"
-    }
-];
+const muscleNames = ["lower-back", "biceps", "front-deltoids", "obliques", "chest", "triceps", 
+                "abs", "calves", "gluteal", "trapezius", "quadriceps",
+                "biceps", "upper-back", "biceps", "obliques", "calves"]
 
 function Exercises() {
-    const [data, setData] = useState([]);
-    const [exercises, setExercises] = useState([{name: '', id: ''}]);
+    const [exercises, setExercises] = useState([{name: '', id: '', muscles: []}]);
 
     useEffect(() => {
-        async function getData() {
-            const response = await axios.get('https://wger.de/api/v2/exerciseimage/?is_main=True/?language=2');
-            setData(response.data.results);
-        }
         async function getExercises() {
-            const response = await axios.get('https://wger.de/api/v2/exercise/?limit=20&offset=360');
-            setExercises(response.data.results);
+            const response = await axios.get('https://wger.de/api/v2/exercise/?limit=300&language=2&muscles=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15');
+            const temp_exercises = response.data.results.filter((exercise, index, self) =>
+                index === self.findIndex(e => (e.name == exercise.name)))
+            
+            temp_exercises.map(exercise => {
+                    exercise.muscles = exercise.muscles.concat(exercise.muscles)
+                if (Array.isArray(exercise.muscles_secondary) && exercise.muscles_secondary.length != 0) {
+                    exercise.muscles = exercise.muscles.concat(exercise.muscles_secondary)
+                }
+                if (exercise.muscles.includes(12)) {
+                    exercise.muscles.push(0);
+                }
+            });
+            
+            setExercises(temp_exercises);
         }
-        getData();
         getExercises();
      }, [])
 
-
-    let exerciseName
-
     return (
         <div className="exercises">
-            {data.map((exercise) => (
+            {exercises.map(exercise => (
                 <div className="exercises__box">
-                    {exercises.length == 0 ? (<a href={exercise.image} target="_blank">{"test"}</a>) :
-                    (<a href={exercise.image} target="_blank">{"test2"}</a>)}
+                    {/* {exercises.length == 0 ? (<a href={exercise.image} target="_blank">{"test"}</a>) :
+                    (<a href={exercise.image} target="_blank">{exercises.find(
+                        exercise => exercise.id == 289
+                    ).name}</a>)} */}
+                    <p>{exercise.id} {exercise.name}</p>
                     <p/>
-                    <img src={exercise.image} alt="exercise image"/>
-                    {/* <div className="exercises__box__bodies">
+                    {/* <img src={exercise.image} alt="exercise image"/> */}
+                    <div className="exercises__box__bodies">
                         <Model
-                            data={exercise.info}
-                            style={{ width: '70px'}}
+                            data={[
+                                { name: 'Bench Press', muscles: exercise.muscles.map(muscle => muscleNames[muscle])},
+                            ]}
+                            style={{ width: '60px'}}
                             type="anterior"
                             highlightedColors={['#87bfff','#3f8efc']}
                         />
                         <Model
-                            data={exercise.info}
-                            style={{ width: '70px'}}
+                            data={[
+                                { name: 'Bench Press', muscles: exercise.muscles.map(muscle => muscleNames[muscle])},
+                            ]}
+                            style={{ width: '60px'}}
                             type="posterior"
                             highlightedColors={['#87bfff','#3f8efc']}
                         />
-                    </div> */}
+                    </div>
                 </div>
             ))}
         </div>
