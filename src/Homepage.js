@@ -9,7 +9,7 @@ function Homepage() {
                 <div className="intro__info">
                     <h1>WELCOME TO THE WORKOUT LAB.</h1>
                     <p>The center for achieving your workout goals.</p>
-                    <a href="#learnMore" className="intro__button">Learn more</a>
+                    <a href="#learnMore" className="intro__button">Learn More</a>
                     <Link to="/sign-in" className="intro__button">Sign In</Link>
                 </div>
                 <img src="homepage_background.jpg" alt="man deadlifting"></img>
