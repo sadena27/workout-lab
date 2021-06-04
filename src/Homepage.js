@@ -15,13 +15,13 @@ function Homepage() {
                 <img src="homepage_background.jpg" alt="man deadlifting"></img>
             </div>
             <div className="exploreBox">
-                <div className="exploreBox_card">
-                    <div className="exploreBox_card_exercise">
+                <div className="exploreBox__card">
+                    <div className="exploreBox__card__exercise">
                         <Link to="/exercises" className="exploreCardText">EXPLORE EXERCISES</Link>
                     </div>
                 </div>
-                <div className="exploreBox_card">
-                    <div className="exploreBox_card_workout">
+                <div className="exploreBox__card">
+                    <div className="exploreBox__card__workout">
                         <Link to="/workout-creator" className="exploreCardText">BUILD CUSTOM WORKOUTS</Link>
                     </div>
                 </div>

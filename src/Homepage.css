@@ -5,7 +5,7 @@
 .intro {
     color: white;
     background-color: black;
-    height: 90vh;
+    height: 100%;
     display: flex;
     flex-flow: wrap;
     align-items: center;
@@ -20,13 +20,14 @@
     max-width: 55%;
     width: auto;
     height: auto;
-    display: block;
-    float: right;
+    border: 1px solid red;
+    margin: 40px;
 }
 
 .intro h1 {
     color: #3f8efc;
-    width: 500px;
+    max-width: 900px;
+    width: auto;
     font-size: 50px;
     margin-bottom: 5px;
 }
@@ -34,7 +35,7 @@
 .intro p {
     margin-top: 5px;
     padding-bottom: 15px;
-    font-size: 20px;
+    font-size: 25px;
 }
 
 .intro__button {
@@ -62,20 +63,22 @@
     padding: 15px 0px;
 }
 
-.exploreBox_card {
-    width: 425px;
-    height: 425px;
+.exploreBox__card {
+    max-width: 425px;
+    max-height: 425px;
+    width: 55vw;
+    height: 55vw;
     background-color: #aaaaaa;
-    font-size: 45px;
+    font-size: 40px;
     border-radius: 20px;
-    margin: 10px 60px;    display: flex;
+    margin: 10px 60px;
+    display: flex;
     justify-content: center;
     align-items: center;
     box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.5);
 }
 
-.exploreBox_card_exercise {
-    height: 100%;
+.exploreBox__card__exercise {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -83,12 +86,13 @@
     background-size: 140% 100%;
     height: inherit;
     width: inherit;
+    max-width: inherit;
+    max-height: inherit;
     background-position: center;
     border-radius: inherit;
 }
 
-.exploreBox_card_workout {
-    height: 100%;
+.exploreBox__card__workout {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -96,6 +100,8 @@
     background-size: 130% 100%;
     height: inherit;
     width: inherit;
+    max-width: inherit;
+    max-height: inherit;
     background-position: center;
     border-radius: inherit;
 }
@@ -111,5 +117,23 @@
 #learnMore {
     background-color: #E5ECF4;
     height: 85vh;
-    padding: 30px 103px;
+    padding: 30px 10vw;
+}
+
+@media screen and (max-width: 974px) {
+    .intro h1 {
+        font-size: 5vw;
+    }
+
+    .intro p {
+        font-size: 2.6vw;
+    }
+
+    .intro__button {
+        font-size: 2.2vw;
+    }
+
+    .exploreBox__card{
+        font-size: 5vw;
+    }
 }
