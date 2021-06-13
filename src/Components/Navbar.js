@@ -29,10 +29,10 @@ function Navbar() {
                         EXERCISES
                 </Link>
                 <Link
-                    to="/workout-creator"
+                    to="/workout-tracker"
                     onClick={() => toggle(false)}
                     className={toggled ? "navbar-menu__items" : "navbar-pages__items"}>
-                        WORKOUT CREATOR
+                        WORKOUT TRACKER
                 </Link>
                 <Link
                     to="/sign-in"
@@ -45,4 +45,4 @@ function Navbar() {
     )
 }
 
-export default Navbar
+export default Navbar;
