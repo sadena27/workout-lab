@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css"
 import axios from 'axios';
+import WorkoutLog from './Workout-Log';
 
-function Workout_Tracker() {
+function WorkoutTracker() {
     const [exercise, setExercise] = useState({username: '', exerciseName: '', sets: 0, reps: 0, users: [], date: new Date()});
 
     const onChangeUsername = (e) => {
@@ -133,8 +134,9 @@ function Workout_Tracker() {
                 <input type="submit" value="Create Exercise Log" className="btn btn-primary"/>
             </div>
             </form>
+            <WorkoutLog/>
         </div>
     )
 }
 
-export default Workout_Tracker;
+export default WorkoutTracker;
