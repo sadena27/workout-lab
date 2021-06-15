@@ -1,0 +1,33 @@
+.form {
+    font-family: Verdana;
+    margin: 40px 400px;
+    padding: 20px 50px;
+    background-color: #E5ECF4;
+    border-radius: 30px;
+}
+
+.form-input {
+    font-family: Verdana;
+    margin: 10px 0px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-input__box {
+    margin: 10px 0px;
+}
+
+.add-btn {
+    color: white;
+    background-color: #3f8efc;
+    border: none;
+    border-radius: 9px;
+    padding: 7px;
+    font-size: 15px;
+    margin: 10px 0px;
+}
+
+.add-btn:hover {
+    background-color: #0464eb;
+    cursor: pointer;
+}

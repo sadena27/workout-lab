@@ -1,0 +1,23 @@
+.log {
+    /* border: 2px solid red; */
+    width: 987px;
+    margin: auto;
+}
+
+.log h3 {
+    /* border: 2px solid blue; */
+    width: 800px;
+    padding: 4px;
+    font-size: 40px;
+    margin-top: 75px;
+    margin-bottom: 20px;
+}
+
+th {
+    /* border: 1px solid pink; */
+    padding-right: 100px;
+}
+
+tbody {
+    padding: 10px;
+}
