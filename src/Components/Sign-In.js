@@ -5,7 +5,6 @@ function Sign_In() {
     const [username, setUsername] = useState({username: ''});
 
     const onChangeUsername = (e) => {
-        // console.log(e.target.value)
         setUsername({username: e.target.value})
     };
 
