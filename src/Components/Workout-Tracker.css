@@ -1,13 +1,13 @@
 .form {
-    font-family: Verdana;
-    margin: 40px 400px;
-    padding: 20px 50px;
+    font-family: Tahoma;
+    width: 715px;
+    margin: 30px auto;
+    padding: 15px 50px;
     background-color: #E5ECF4;
     border-radius: 30px;
 }
 
 .form-input {
-    font-family: Verdana;
     margin: 10px 0px;
     display: flex;
     flex-direction: column;
@@ -22,12 +22,12 @@
     background-color: #3f8efc;
     border: none;
     border-radius: 9px;
-    padding: 7px;
-    font-size: 15px;
+    padding: 8px;
+    font-size: 16px;
     margin: 10px 0px;
+    cursor: pointer;
 }
 
 .add-btn:hover {
     background-color: #0464eb;
-    cursor: pointer;
 }

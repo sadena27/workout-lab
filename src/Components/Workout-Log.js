@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import EditIcon from '@material-ui/icons/Edit';
+import DeleteIcon from '@material-ui/icons/Delete';
 import './Workout-Log.css';
 
 const Exercise = props => (
@@ -10,11 +12,13 @@ const Exercise = props => (
         <td>{props.exercise.sets}</td>
         <td>{props.exercise.reps}</td>
         {props.exercise.date
-            ? <td>{props.exercise.date.substring(0,10)}</td>
+            ? <td>{(new Date(props.exercise.date.substring(0,19)).toDateString()).substring(4)}</td>
             : <td>No date</td>
         }
+        <td></td>
         <td>
-            <Link to={"/edit/" + props.exercise._id}>Edit</Link> | <button onClick={() => {props.deleteExercise(props.exercise._id)}}>Delete</button>
+            <Link to={"/edit/" + props.exercise._id} className="edit-link"><EditIcon/></Link> 
+            <button onClick={() => {props.deleteExercise(props.exercise._id)}} className="delete-link"><DeleteIcon/></button>
         </td>
     </tr>
 )
@@ -42,15 +46,16 @@ function WorkoutLog() {
     return (
         <div className="log">
             <h3>Logged Exercises</h3>
-            <table className="table">
+            <table>
                 <thead>
                     <tr>
-                    <th>Username</th>
-                    <th>Exercise Name</th>
-                    <th>Sets</th>
-                    <th>Reps</th>
-                    <th>Date</th>
-                    <th>Actions</th>
+                        <th>Username</th>
+                        <th>Exercise</th>
+                        <th>Sets</th>
+                        <th>Reps</th>
+                        <th>Date</th>
+                        <th></th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>

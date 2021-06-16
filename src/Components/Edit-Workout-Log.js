@@ -72,68 +72,71 @@ function EditWorkoutLog(props) {
             .catch((error) => {
                 console.log(error);
             })
-    }, []);
+        console.log("edit effect ran")
+    }, [props.match.params.id]);
 
     return (
-        <div className="form">
-            <h3>Edit Exercise</h3>
-            <form onSubmit={onSubmit}>
-                <div className="form-input"> 
-                    <label>Username: </label>
-                    <select
-                        required
-                        className="form-input__box"
-                        value={exercise.username}
-                        onChange={onChangeUsername}>
-                        {
-                        users.map((user) => {
-                            return <option 
-                                key={user}
-                                value={user}>{user}
-                            </option>;
-                        })
-                        }
-                    </select>
-                </div>
-                <div className="form-input"> 
-                    <label>Exercise Name: </label>
-                    <input
-                        type="text"
-                        required
-                        className="form-input__box"
-                        value={exercise.exerciseName}
-                        onChange={onChangeExerciseName}
-                        />
-                </div>
-                <div className="form-input">
-                    <label>Sets: </label>
-                    <input 
-                        type="text" 
-                        className="form-input__box"
-                        value={exercise.sets}
-                        onChange={onChangeSets}
-                        />
-                </div>
-                <div className="form-input">
-                    <label>Reps: </label>
-                    <input 
-                        type="text" 
-                        className="form-input__box"
-                        value={exercise.reps}
-                        onChange={onChangeReps}
-                        />
-                </div>
-                <div className="form-input">
-                    <label>Date: </label>
-                    <div>
-                        <DatePicker
-                        selected={exercise.date}
-                        onChange={onChangeDate}
-                        />
+        <div className="edit-box">
+            <div className="form">
+                <h3>Edit Exercise</h3>
+                <form onSubmit={onSubmit}>
+                    <div className="form-input"> 
+                        <label>Username: </label>
+                        <select
+                            required
+                            className="form-input__box"
+                            value={exercise.username}
+                            onChange={onChangeUsername}>
+                            {
+                            users.map((user) => {
+                                return <option 
+                                    key={user}
+                                    value={user}>{user}
+                                </option>;
+                            })
+                            }
+                        </select>
                     </div>
-                </div>
-                <input type="submit" value="Edit Exercise" className="add-btn"/>
-            </form>
+                    <div className="form-input"> 
+                        <label>Exercise Name: </label>
+                        <input
+                            type="text"
+                            required
+                            className="form-input__box"
+                            value={exercise.exerciseName}
+                            onChange={onChangeExerciseName}
+                            />
+                    </div>
+                    <div className="form-input">
+                        <label>Sets: </label>
+                        <input 
+                            type="text" 
+                            className="form-input__box"
+                            value={exercise.sets}
+                            onChange={onChangeSets}
+                            />
+                    </div>
+                    <div className="form-input">
+                        <label>Reps: </label>
+                        <input 
+                            type="text" 
+                            className="form-input__box"
+                            value={exercise.reps}
+                            onChange={onChangeReps}
+                            />
+                    </div>
+                    <div className="form-input">
+                        <label>Date: </label>
+                        <div>
+                            <DatePicker
+                            selected={exercise.date}
+                            onChange={onChangeDate}
+                            />
+                        </div>
+                    </div>
+                    <input type="submit" value="Edit Exercise" className="add-btn"/>
+                </form>
+            </div>
         </div>
     )
 }

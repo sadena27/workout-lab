@@ -44,7 +44,7 @@ function WorkoutTracker() {
         axios.post('http://localhost:5000/exercises/add', exercise)
             .then(res => console.log(res.data));
 
-        setExercise({username: '', exerciseName: '', sets: 0, reps: 0, users: [], date: new Date()})
+        setExercise({...exercise, exerciseName: '', sets: 0, reps: 0, users: [], date: new Date()})
 
         // window.location = '/'
     }
@@ -115,10 +115,7 @@ function WorkoutTracker() {
                     <div className="form-input">
                         <label>Date: </label>
                         <div>
-                            <DatePicker
-                            selected={exercise.date}
-                            onChange={onChangeDate}
-                            />
+                            <DatePicker selected={exercise.date} onChange={onChangeDate}/>
                         </div>
                     </div>
                     <input type="submit" value="Add Exercise" className="add-btn"/>

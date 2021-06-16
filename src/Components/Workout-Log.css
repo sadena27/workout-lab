@@ -1,23 +1,44 @@
 .log {
-    /* border: 2px solid red; */
-    width: 987px;
+    width: 754px;
     margin: auto;
+    font-family: Tahoma;
+    background-color: #E5ECF4;
+    border-radius: 30px;
+    padding-left: 60px;
+    padding-bottom: 20px;
 }
 
 .log h3 {
-    /* border: 2px solid blue; */
     width: 800px;
-    padding: 4px;
+    padding-left: 2px;
     font-size: 40px;
-    margin-top: 75px;
+    margin-top: 90px;
     margin-bottom: 20px;
+    padding-top: 15px;
 }
 
 th {
-    /* border: 1px solid pink; */
-    padding-right: 100px;
+    padding-right: 60px;
 }
 
-tbody {
-    padding: 10px;
+.edit-box {
+    margin-top: 100px;
+}
+
+.edit-link {
+    text-decoration: none;
+    color: black;
+    font-size: 16px;
+}
+
+.delete-link {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+
+.delete-link:hover {
+    cursor: pointer;
 }
