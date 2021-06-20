@@ -1,10 +1,13 @@
 import './App.css';
-import Navbar from './Components/Navbar';
+import Navbar from './Components/Navbar/Navbar';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import Homepage from './Components/Homepage';
+import Homepage from './Components/Homepage/Homepage';
 import Exercises from './Components/Exercises';
-import Workout_Tracker from './Components/Workout-Tracker';
-import Sign_In from './Components/Sign-In';
+import WorkoutTracker from './Components/Workout-Tracker';
+import SignIn from './Components/Sign-In';
+import EditExerciseLog from './Components/Exercise-Log/Edit-Exercise-Log';
+import EditWorkoutLog from './Components/Workout-Log/Edit-Workout-Log';
+
 
 function App() {
   return (
@@ -15,8 +18,10 @@ function App() {
         <Switch>
           <Route exact path="/" component={Homepage}/>
           <Route exact path="/exercises" component={Exercises}/>
-          <Route exact path="/workout-tracker" component={Workout_Tracker}/>
-          <Route exact path="/sign-in" component={Sign_In}/>
+          <Route exact path="/workout-tracker" component={WorkoutTracker}/>
+          <Route exact path="/sign-in" component={SignIn}/>
+          <Route exact path="/exercise/edit/:id" component={EditExerciseLog}/>
+          <Route exact path="/workout/edit/:id" component={EditWorkoutLog}/>
         </Switch>
       </div>
     </BrowserRouter>

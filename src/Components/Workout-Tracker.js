@@ -1,62 +1,79 @@
 import React, { useState, useEffect } from 'react';
-import DatePicker from 'react-datepicker';
-import "react-datepicker/dist/react-datepicker.css"
 import axios from 'axios';
-import WorkoutLog from './Workout-Log';
-import './Workout-Tracker.css';
+import ExerciseLog from './Exercise-Log/Exercise-Log';
+import WorkoutLog from './Workout-Log/Workout-Log';
+import WorkoutForm from './Workout-Log/Workout-Form';
+import ExerciseForm from './Exercise-Log/Exercise-Form';
+import './Form.css';
 
 function WorkoutTracker() {
-    const [exercise, setExercise] = useState({username: '', exerciseName: '', sets: 0, reps: 0, users: [], date: new Date()});
+    const [exercise, setExercise] = useState({username: '', name: '', description: '', users: []});
+    const [workout, setWorkout] = useState({name: '', date: new Date(), exercises: []});
+    const [users, setUsers] = useState([]);
 
     const onChangeUsername = e => {
-        setExercise({...exercise, username: e.target.value})
+        setExercise(prevState => ({...prevState, username: e.target.value}))
     };
 
     const onChangeExerciseName = e => {
-        setExercise({...exercise, exerciseName: e.target.value})
+        setExercise(prevState => ({...prevState, name: e.target.value}))
     };
 
-    const onChangeSets = e => {
-        setExercise({...exercise, sets: e.target.value})
+    const onChangeDescription = e => {
+        setExercise(prevState => ({...prevState, description: e.target.value}))
     };
 
-    const onChangeReps = e => {
-        setExercise({...exercise, reps: e.target.value})
-    };
+    const onChangeWorkoutName = e => {
+        setWorkout(prevState => ({...prevState, name: e.target.value}))
+    }
 
     const onChangeDate = date => {
-        setExercise({...exercise, date: date})
+        setWorkout(prevState => ({...prevState, date: date}))
     };
 
-    const onSubmit = e => {
+    const onSubmitExercise = e => {
         e.preventDefault();
 
         const newExercise = {
             username: exercise.username,
-            exerciseName: exercise.exerciseName,
-            sets: exercise.sets,
-            reps: exercise.reps,
-            date: exercise.date,
+            name: exercise.name,
+            description: exercise.description,
         }
 
         console.log(newExercise);
 
-        axios.post('http://localhost:5000/exercises/add', exercise)
+        axios.post('http://localhost:5000/exercises/add', newExercise)
             .then(res => console.log(res.data));
 
-        setExercise({...exercise, exerciseName: '', sets: 0, reps: 0, users: [], date: new Date()})
+        setExercise({...exercise, name: '', description: '', users: []})
 
         // window.location = '/'
     }
-    
-    const [users, setUsers] = useState([]);
+
+    const onSubmitWorkout = e => {
+        e.preventDefault();
+
+        const newWorkout = {
+            name: workout.name,
+            date: workout.date,
+        }
+
+        console.log(newWorkout);
+
+        axios.post('http://localhost:5000/workouts/add', workout)
+            .then(res => console.log(res.data));
+
+        setWorkout({name: '', date: new Date(), exercises: []})
+
+        // window.location = '/'
+    }
 
     useEffect(() => {
         axios.get('http://localhost:5000/users')
             .then(response => {
                 if (response.data.length > 0) {
                     setUsers(response.data.map(user => user.username));
-                    setExercise({...exercise, username: response.data[0].username})
+                    setExercise(prevState => ({...prevState, username: response.data[0].username}))
                 }
             })
     }, []);
@@ -64,63 +81,23 @@ function WorkoutTracker() {
     return (
         <div>
             <WorkoutLog/>
-            <div className="form">
-                <h3>Add New Exercise</h3>
-                <form onSubmit={onSubmit}>
-                    <div className="form-input"> 
-                        <label>Username: </label>
-                        <select
-                            required
-                            className="form-input__box"
-                            value={exercise.username}
-                            onChange={onChangeUsername}>
-                            {
-                            users.map((user) => {
-                                return <option 
-                                    key={user}
-                                    value={user}>{user}
-                                </option>;
-                            })
-                            }
-                        </select>
-                    </div>
-                    <div className="form-input"> 
-                        <label>Exercise Name: </label>
-                        <input
-                            type="text"
-                            required
-                            className="form-input__box"
-                            value={exercise.exerciseName}
-                            onChange={onChangeExerciseName}
-                            />
-                    </div>
-                    <div className="form-input">
-                        <label>Sets: </label>
-                        <input 
-                            type="text" 
-                            className="form-input__box"
-                            value={exercise.sets}
-                            onChange={onChangeSets}
-                            />
-                    </div>
-                    <div className="form-input">
-                        <label>Reps: </label>
-                        <input 
-                            type="text" 
-                            className="form-input__box"
-                            value={exercise.reps}
-                            onChange={onChangeReps}
-                            />
-                    </div>
-                    <div className="form-input">
-                        <label>Date: </label>
-                        <div>
-                            <DatePicker selected={exercise.date} onChange={onChangeDate}/>
-                        </div>
-                    </div>
-                    <input type="submit" value="Add Exercise" className="add-btn"/>
-                </form>
-            </div>
+            <ExerciseLog/>
+            <WorkoutForm
+                type="Add"
+                workout={workout}
+                onChangeName={onChangeWorkoutName}
+                onSubmit={onSubmitWorkout}
+                onChangeDate={onChangeDate}
+            />
+            <ExerciseForm
+                type="Add"
+                exercise={exercise}
+                onChangeName={onChangeExerciseName}
+                onSubmit={onSubmitExercise}
+                users={users}
+                onChangeUsername={onChangeUsername}
+                onChangeDescription={onChangeDescription}
+            />
         </div>
     )
 }

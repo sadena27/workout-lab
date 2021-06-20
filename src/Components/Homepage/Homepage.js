@@ -22,7 +22,7 @@ function Homepage() {
                 </div>
                 <div className="exploreBox__card">
                     <div className="exploreBox__card__workout">
-                        <Link to="/workout-creator" className="exploreCardText">TRACK YOUR WORKOUTS</Link>
+                        <Link to="/workout-tracker" className="exploreCardText">TRACK YOUR WORKOUTS</Link>
                     </div>
                 </div>
             </div>

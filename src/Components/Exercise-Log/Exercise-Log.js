@@ -3,39 +3,39 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
-import './Workout-Log.css';
+import '../Log.css';
 
 const Exercise = props => (
     <tr>
         <td>{props.exercise.username}</td>
-        <td>{props.exercise.exerciseName}</td>
-        <td>{props.exercise.sets}</td>
-        <td>{props.exercise.reps}</td>
-        {props.exercise.date
-            ? <td>{(new Date(props.exercise.date.substring(0,19)).toDateString()).substring(4)}</td>
-            : <td>No date</td>
-        }
+        <td>{props.exercise.name}</td>
+        <td>{props.exercise.description}</td>
         <td></td>
         <td>
-            <Link to={"/edit/" + props.exercise._id} className="edit-link"><EditIcon/></Link> 
+            <Link to={"/exercise/edit/" + props.exercise._id} className="edit-link"><EditIcon/></Link> 
             <button onClick={() => {props.deleteExercise(props.exercise._id)}} className="delete-link"><DeleteIcon/></button>
         </td>
     </tr>
 )
 
-function WorkoutLog() {
+function ExerciseLog() {
 
     const [exercises, setExercises] = useState([]);
 
     useEffect(() => {
         axios.get('http://localhost:5000/exercises/')
             .then(response => {
-                setExercises(response.data)
+                if (response.data !== exercises) {
+                    setExercises(response.data)
+                } else {
+                    console.log('false')
+                }
             })
             .catch((error) => {
                 console.log(error)
             })
-    }, [exercises]);
+            console.log('effect running')
+    }, []);
  
     const deleteExercise = id => {
         axios.delete('http://localhost:5000/exercises/' + id)
@@ -51,9 +51,7 @@ function WorkoutLog() {
                     <tr>
                         <th>Username</th>
                         <th>Exercise</th>
-                        <th>Sets</th>
-                        <th>Reps</th>
-                        <th>Date</th>
+                        <th>Description</th>
                         <th></th>
                         <th></th>
                     </tr>
@@ -68,5 +66,4 @@ function WorkoutLog() {
     )
 }
 
-export default WorkoutLog;
-
+export default ExerciseLog;
