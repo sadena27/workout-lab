@@ -7,14 +7,14 @@ import '../Log.css';
 
 const Workout = props => (
     <tr>
-        <td>{props.exercise.name}</td>
+        <td><Link to={"/workout/" + props.exercise._id} className="link">{props.exercise.name}</Link></td>
         {props.exercise.date
             ? <td>{(new Date(props.exercise.date.substring(0,19)).toDateString()).substring(4)}</td>
             : <td>No date</td>
         }
         <td></td>
         <td>
-            <Link to={"/workout/edit/" + props.exercise._id} className="edit-link"><EditIcon/></Link> 
+            <Link to={"/workout/edit/" + props.exercise._id} className="link"><EditIcon/></Link> 
             <button onClick={() => {props.deleteWorkout(props.exercise._id)}} className="delete-link"><DeleteIcon/></button>
         </td>
     </tr>

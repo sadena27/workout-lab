@@ -10,9 +10,8 @@ const Exercise = props => (
         <td>{props.exercise.username}</td>
         <td>{props.exercise.name}</td>
         <td>{props.exercise.description}</td>
-        <td></td>
         <td>
-            <Link to={"/exercise/edit/" + props.exercise._id} className="edit-link"><EditIcon/></Link> 
+            <Link to={"/exercise/edit/" + props.exercise._id} className="link"><EditIcon/></Link> 
             <button onClick={() => {props.deleteExercise(props.exercise._id)}} className="delete-link"><DeleteIcon/></button>
         </td>
     </tr>
@@ -52,7 +51,6 @@ function ExerciseLog() {
                         <th>Username</th>
                         <th>Exercise</th>
                         <th>Description</th>
-                        <th></th>
                         <th></th>
                     </tr>
                 </thead>
