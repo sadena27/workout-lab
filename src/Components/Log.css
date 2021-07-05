@@ -48,3 +48,10 @@ th {
 .delete-link:hover {
     color: #3f8efc;
 }
+
+.loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20vh;
+}

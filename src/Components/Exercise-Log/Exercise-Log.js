@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
+import Loader from "react-loader-spinner";
 import '../Log.css';
 
 const Exercise = props => (
@@ -21,17 +22,14 @@ class ExerciseLog extends Component {
     constructor(props) {
         super(props);
 
-        this.state = {exercises: []};
+        this.state = {exercises: [], name: '', date: new Date()};
         this.deleteExercise = this.deleteExercise.bind(this);
     }
 
     componentDidMount() {
         axios.get('http://localhost:5000/workouts/' + this.props.match.params.id)
             .then(response => {
-                this.setState({exercises: response.data.exercises})
-                this.name = response.data.name;
-                this.date = (new Date(response.data.date.substring(0,19)).toDateString()).substring(4);
-                console.log(response.data.exercises)
+                this.setState({exercises: response.data.exercises, name: response.data.name, date: (new Date(response.data.date.substring(0,19)).toDateString()).substring(4)})
             })
             .catch((error) => {
                 console.log(error)
@@ -51,26 +49,34 @@ class ExerciseLog extends Component {
     }
 
     render() {
-        return (
-            <div className="log">
-                <h3>{this.name} - {this.date}</h3>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Username</th>
-                            <th>Exercise</th>
-                            <th>Description</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {this.state.exercises.map(currExercise => {
-                            return <Exercise exercise={currExercise} deleteExercise={this.deleteExercise} key={currExercise._id}/>;
-                        })}
-                    </tbody>
-                </table>
-            </div>
-        )
+        if (this.state.name ) {
+            return (
+                    <div className="log">
+                        <h3>{this.state.name} - {this.state.date}</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Username</th>
+                                    <th>Exercise</th>
+                                    <th>Description</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {this.state.exercises.map(currExercise => {
+                                    return <Exercise exercise={currExercise} deleteExercise={this.deleteExercise} key={currExercise._id}/>;
+                                })}
+                            </tbody>
+                        </table>
+                    </div>
+            )
+        } else {
+            return (
+                <div className="loading">
+                    <Loader type="Oval" color="#3f8efc" height={120} width={120}/>
+                </div>
+            )
+        }
     }
 }
 
