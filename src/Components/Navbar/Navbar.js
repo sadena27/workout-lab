@@ -19,7 +19,7 @@ function Navbar() {
                 {toggleIcon}
             </button>
             <Link to="/">
-                <img src="Workout Lab Logo.png" alt="Workout Lab Logo" className="navbar-logo"/>
+                <img src="workout-lab-logo.png" alt="Workout Lab Logo" className="navbar-logo"/>
             </Link>
             <div className={toggled ? "navbar-menu" : "navbar-pages"}>
                 <Link
