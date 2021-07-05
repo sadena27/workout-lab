@@ -7,7 +7,7 @@ import WorkoutTracker from './Components/Workout-Tracker';
 import SignIn from './Components/Sign-In';
 import EditExerciseLog from './Components/Exercise-Log/Edit-Exercise-Log';
 import EditWorkoutLog from './Components/Workout-Log/Edit-Workout-Log';
-
+import WorkoutExercises from './Components/Exercise-Log/Workout-Exercises';
 
 function App() {
   return (
@@ -22,6 +22,7 @@ function App() {
           <Route exact path="/sign-in" component={SignIn}/>
           <Route exact path="/exercise/edit/:id" component={EditExerciseLog}/>
           <Route exact path="/workout/edit/:id" component={EditWorkoutLog}/>
+          <Route exact path="/workout/show/:id" component={WorkoutExercises}/>
         </Switch>
       </div>
     </BrowserRouter>

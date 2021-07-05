@@ -18,9 +18,9 @@ function EditWorkoutLog(props) {
         e.preventDefault();
 
         const newWorkout = {
-            username: workout.username,
             name: workout.name,
             description: workout.description,
+            exercises: workout.exercises
         }
 
         console.log(newWorkout);
@@ -36,7 +36,8 @@ function EditWorkoutLog(props) {
             .then(response => {
                 setWorkout({
                     name: response.data.name,
-                    date: new Date(response.data.date)
+                    date: new Date(response.data.date),
+                    exercises: response.data.exercises
                 })
             })
             .catch((error) => {

@@ -26,28 +26,34 @@ class ExerciseLog extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:5000/exercises/')
+        axios.get('http://localhost:5000/workouts/' + this.props.match.params.id)
             .then(response => {
-                this.setState({exercises: response.data})
+                this.setState({exercises: response.data.exercises})
+                this.name = response.data.name;
+                this.date = (new Date(response.data.date.substring(0,19)).toDateString()).substring(4);
+                console.log(response.data.exercises)
             })
             .catch((error) => {
                 console.log(error)
             })
-            console.log('effect running')
     }
  
+    // CHANGE THE DELETE EXERCISES (INCORRECT)
     deleteExercise(id) {
-        axios.delete('http://localhost:5000/exercises/' + id)
+        axios.post('http://localhost:5000/workouts/deleteExercise/' + this.props.match.params.id, {id: id})
             .then(response => {
                 console.log(response.data)
-            });
+            })
+            .catch((error) => {
+                console.log(error);
+            })
         this.setState({exercises: this.state.exercises.filter(exercise => exercise._id !== id)})
     }
 
     render() {
         return (
             <div className="log">
-                <h3>Logged Exercises</h3>
+                <h3>{this.name} - {this.date}</h3>
                 <table>
                     <thead>
                         <tr>
@@ -63,7 +69,7 @@ class ExerciseLog extends Component {
                         })}
                     </tbody>
                 </table>
-             </div>
+            </div>
         )
     }
 }

@@ -35,18 +35,45 @@ router.route('/:id').delete((req, res) => {
       .catch(err => res.status(400).json('Error: ' + err));
   });
   
-  router.route('/update/:id').post((req, res) => {
-    Workout.findById(req.params.id)
-      .then(workout => {
-        workout.name = req.body.name;
-        workout.date = Date.parse(req.body.date);
-        workout.exercises = req.body.exercises;
+router.route('/update/:id').post((req, res) => {
+  Workout.findById(req.params.id)
+    .then(workout => {
+      workout.name = req.body.name;
+      workout.date = Date.parse(req.body.date);
+      workout.exercises = req.body.exercises;
+
+      workout.save()
+        .then(() => res.json('Workout updated!'))
+        .catch(err => res.status(400).json('Error: ' + err));
+    })
+    .catch(err => res.status(400).json('Error: ' + err));
+});
+
+router.route('/updateExercise/:id').post((req, res) => {
+  Workout.findById(req.params.id)
+    .then(workout => {
+      workout.exercises.push(req.body);
+
+      workout.save()
+        .then(() => res.json('Workout updated!'))
+        .catch(err => res.status(400).json('Error: ' + err));
+    })
+    .catch(err => res.status(400).json('Error: ' + err));
+});
+
+router.route('/deleteExercise/:id').post((req, res) => {
+  const id = req.body.id;
   
-        workout.save()
-          .then(() => res.json('Workout updated!'))
-          .catch(err => res.status(400).json('Error: ' + err));
-      })
-      .catch(err => res.status(400).json('Error: ' + err));
-  });
+  Workout.findById(req.params.id)
+    .then(workout => {
+
+      workout.exercises = workout.exercises.filter(exercise => exercise._id != id)
+      
+      workout.save()
+        .then(() => res.json('Exercise deleted!'))
+        .catch(err => res.status(400).json('Error: ' + err));
+    })
+    .catch(err => res.status(400).json('Error: ' + err));
+});
 
 module.exports = router;

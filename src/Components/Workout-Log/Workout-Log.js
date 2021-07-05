@@ -7,7 +7,7 @@ import '../Log.css';
 
 const Workout = props => (
     <tr>
-        <td><Link to={"/workout/" + props.exercise._id} className="link">{props.exercise.name}</Link></td>
+        <td><Link to={"/workout/show/" + props.exercise._id} className="link">{props.exercise.name}</Link></td>
         {props.exercise.date
             ? <td>{(new Date(props.exercise.date.substring(0,19)).toDateString()).substring(4)}</td>
             : <td>No date</td>
