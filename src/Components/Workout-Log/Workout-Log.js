@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import EditIcon from '@material-ui/icons/Edit';
@@ -20,50 +20,52 @@ const Workout = props => (
     </tr>
 )
 
-function WorkoutLog() {
+class WorkoutLog extends Component {
+    constructor(props) {
+        super(props);
 
-    const [workouts, setWorkouts] = useState([]);
+        this.state = {workouts: []};
+        this.deleteWorkout = this.deleteWorkout.bind(this);
+    }
 
-    useEffect(() => {
+    componentDidMount() {
         axios.get('http://localhost:5000/workouts/')
             .then(response => {
-                if (response.data !== workouts) {
-                    setWorkouts(response.data)
-                } else {
-                    console.log('false')
-                }
+                this.setState({workouts: response.data})
             })
             .catch((error) => {
                 console.log(error)
             })
-    }, []);
+    }
  
-    const deleteWorkout = id => {
+    deleteWorkout(id) {
         axios.delete('http://localhost:5000/workouts/' + id)
           .then(response => { console.log(response.data)});
-        setWorkouts(workouts.filter(workout => workout._id !== id))
+        this.setState({workouts: this.state.workouts.filter(workout => workout._id !== id)})
     }
 
-    return (
-        <div className="log">
-            <h3>Logged Workouts</h3>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Workout Name</th>
-                        <th>Date</th>
-                        <th></th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {workouts.map(currWorkout => {
-                        return <Workout exercise={currWorkout} deleteWorkout={deleteWorkout} key={currWorkout._id}/>;
-                    })}
-                </tbody>
-            </table>
-      </div>
-    )
+    render() {
+        return (
+            <div className="log">
+                <h3>Logged Workouts</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Workout Name</th>
+                            <th>Date</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {this.state.workouts.map(currWorkout => {
+                            return <Workout exercise={currWorkout} deleteWorkout={this.deleteWorkout} key={currWorkout._id}/>;
+                        })}
+                    </tbody>
+                </table>
+        </div>
+        )
+    }
 }
 
 export default WorkoutLog;
