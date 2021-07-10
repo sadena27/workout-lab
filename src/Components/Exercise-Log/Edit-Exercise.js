@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import ExerciseLog from './Exercise-Log';
 import ExerciseForm from './Exercise-Form';
 import '../Form.css';
 
-function WorkoutExercises(props) {
+function EditExercise(props) {
     const [exercise, setExercise] = useState({username: '', name: '', description: '', users: []});
     const [users, setUsers] = useState([]);
 
@@ -29,32 +28,47 @@ function WorkoutExercises(props) {
             description: exercise.description,
         }
 
-        axios.post('http://localhost:5000/workouts/updateExercise/' + props.match.params.id, newExercise)
+        console.log(newExercise);
+
+        axios.post('http://localhost:5000/exercises/update/' + props.match.params.id, exercise)
             .then(res => console.log(res.data))
             .catch((error) => {
                 console.log(error);
             })
 
-        setExercise({...exercise, name: '', description: '', users: []})
-
-        // window.location = '/'
+        window.location = '/workout-tracker'
     }
 
     useEffect(() => {
+        axios.get('http://localhost:5000/workouts/' + props.match.params.id)
+            .then(response => {
+                setExercise({
+                    username: response.data.exercises.username,
+                    name: response.data.exercises.name,
+                    description: response.data.exercises.description, 
+                })
+                console.log(response.data.exercises)
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+
         axios.get('http://localhost:5000/users')
             .then(response => {
                 if (response.data.length > 0) {
                     setUsers(response.data.map(user => user.username));
-                    setExercise(prevState => ({...prevState, username: response.data[0].username}))
                 }
             })
+            .catch((error) => {
+                console.log(error);
+            })
+        console.log("edit effect ran")
     }, [props.match.params.id]);
 
     return (
-        <div>
-            <ExerciseLog {...props}/>
+        <div className="edit-box">
             <ExerciseForm
-                type="Add"
+                type="Edit"
                 exercise={exercise}
                 onChangeName={onChangeExerciseName}
                 onSubmit={onSubmitExercise}
@@ -66,4 +80,4 @@ function WorkoutExercises(props) {
     )
 }
 
-export default WorkoutExercises;
+export default EditExercise;

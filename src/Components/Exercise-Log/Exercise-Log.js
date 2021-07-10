@@ -12,8 +12,8 @@ const Exercise = props => (
         <td>{props.exercise.name}</td>
         <td>{props.exercise.description}</td>
         <td>
-            <Link to={"/exercise/edit/" + props.exercise._id} className="link"><EditIcon/></Link> 
-            <button onClick={() => {props.deleteExercise(props.exercise._id)}} className="delete-link"><DeleteIcon/></button>
+            <Link to={"/exercise/edit/" + props.exercise._id} className="action-btn"><EditIcon/></Link> 
+            <button onClick={() => {props.deleteExercise(props.exercise._id)}} className="action-btn"><DeleteIcon/></button>
         </td>
     </tr>
 )
@@ -36,7 +36,6 @@ class ExerciseLog extends Component {
             })
     }
  
-    // CHANGE THE DELETE EXERCISES (INCORRECT)
     deleteExercise(id) {
         axios.post('http://localhost:5000/workouts/deleteExercise/' + this.props.match.params.id, {id: id})
             .then(response => {
@@ -68,12 +67,16 @@ class ExerciseLog extends Component {
                                 })}
                             </tbody>
                         </table>
+                        <Link to={"/workout/show/" + this.props.match.params.id + "/add-exercise"} className="">Add Exercise</Link>
                     </div>
             )
         } else {
             return (
-                <div className="loading">
-                    <Loader type="Oval" color="#3f8efc" height={120} width={120}/>
+                <div>
+                     <div className="loading">
+                        <Loader type="Oval" color="#3f8efc" height={120} width={120}/>
+                    </div>
+                    <Link to={"/workout/show/" + this.props.match.params.id + "/add-exercise"} className="">Add Exercise</Link>
                 </div>
             )
         }

@@ -2,12 +2,14 @@ import './App.css';
 import Navbar from './Components/Navbar/Navbar';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Homepage from './Components/Homepage/Homepage';
-import Exercises from './Components/Exercises';
-import WorkoutTracker from './Components/Workout-Tracker';
+import ExerciseDatabase from './Components/Exercise-Database';
+import WorkoutLog from './Components/Workout/Workout-Log';
 import SignIn from './Components/Sign-In';
-import EditExerciseLog from './Components/Exercise-Log/Edit-Exercise-Log';
-import EditWorkoutLog from './Components/Workout-Log/Edit-Workout-Log';
-import WorkoutExercises from './Components/Exercise-Log/Workout-Exercises';
+import EditExercise from './Components/Exercise-Log/Edit-Exercise';
+import EditWorkout from './Components/Workout/Edit-Workout';
+import ExerciseLog from './Components/Exercise-Log/Exercise-Log';
+import AddWorkout from './Components/Workout/Add-Workout';
+import AddExercise from './Components/Exercise-Log/Add-Exercise';
 
 function App() {
   return (
@@ -17,12 +19,14 @@ function App() {
         <Navbar/>
         <Switch>
           <Route exact path="/" component={Homepage}/>
-          <Route exact path="/exercises" component={Exercises}/>
-          <Route exact path="/workout-tracker" component={WorkoutTracker}/>
+          <Route exact path="/exercises" component={ExerciseDatabase}/>
+          <Route exact path="/workout-tracker" component={WorkoutLog}/>
           <Route exact path="/sign-in" component={SignIn}/>
-          <Route exact path="/exercise/edit/:id" component={EditExerciseLog}/>
-          <Route exact path="/workout/edit/:id" component={EditWorkoutLog}/>
-          <Route exact path="/workout/show/:id" component={WorkoutExercises}/>
+          <Route exact path="/exercise/edit/:id" component={EditExercise}/>
+          <Route exact path="/workout/edit/:id" component={EditWorkout}/>
+          <Route exact path="/workout/show/:id" component={ExerciseLog}/>
+          <Route exact path="/workout-tracker/add-workout" component={AddWorkout}/>
+          <Route exact path="/workout/show/:id/add-exercise" component={AddExercise}/>
         </Switch>
       </div>
     </BrowserRouter>

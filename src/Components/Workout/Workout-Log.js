@@ -14,8 +14,8 @@ const Workout = props => (
         }
         <td></td>
         <td>
-            <Link to={"/workout/edit/" + props.exercise._id} className="link"><EditIcon/></Link> 
-            <button onClick={() => {props.deleteWorkout(props.exercise._id)}} className="delete-link"><DeleteIcon/></button>
+            <Link to={"/workout/edit/" + props.exercise._id} className="action-btn"><EditIcon/></Link> 
+            <button onClick={() => {props.deleteWorkout(props.exercise._id)}} className="action-btn"><DeleteIcon/></button>
         </td>
     </tr>
 )
@@ -63,7 +63,8 @@ class WorkoutLog extends Component {
                         })}
                     </tbody>
                 </table>
-        </div>
+                <Link to="/workout-tracker/add-workout" className="">Add Workout</Link> 
+            </div>
         )
     }
 }

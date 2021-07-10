@@ -9,13 +9,13 @@ function WorkoutForm(props) {
             <h3>{props.type} Workout</h3>
                 <form onSubmit={props.onSubmit}>
                     <div className="form-input"> 
-                        <label>Workout Name: </label>
+                        <label>Workout Name:</label>
                         <input
                             type="text"
                             required
                             className="form-input__box"
-                            value={props.workout.name}
                             onChange={props.onChangeName}
+                            value={props.workout.name}
                             />
                     </div>
                     <div className="form-input">

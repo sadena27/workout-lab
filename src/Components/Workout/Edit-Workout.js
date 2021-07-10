@@ -3,7 +3,7 @@ import axios from 'axios';
 import WorkoutForm from './Workout-Form';
 import '../Form.css';
 
-function EditWorkoutLog(props) {
+function EditWorkout(props) {
     const [workout, setWorkout] = useState({name: '', date: new Date(), exercises: []})
 
     const onChangeWorkoutName = e => {
@@ -59,4 +59,4 @@ function EditWorkoutLog(props) {
     )
 }
 
-export default EditWorkoutLog;
+export default EditWorkout;

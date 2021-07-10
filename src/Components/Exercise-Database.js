@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import Model from 'react-body-highlighter';
 import Loader from "react-loader-spinner";
-import './Exercises.css';
+import './Exercise-Database.css';
 import axios from 'axios';
 
 const muscleNames = ["lower-back", "biceps", "front-deltoids", "obliques", "chest", "triceps", 
                 "abs", "calves", "gluteal", "trapezius", "quadriceps",
                 "biceps", "upper-back", "biceps", "obliques", "calves"]
 
-function Exercises() {
+function ExerciseDatabase() {
     const [exercises, setExercises] = useState([{name: '', id: '', muscles: []}]);
 
     useEffect(() => {
@@ -76,4 +76,4 @@ function Exercises() {
     )
 }
 
-export default Exercises
+export default ExerciseDatabase;

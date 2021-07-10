@@ -1,15 +1,14 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import WorkoutLog from './Workout-Log/Workout-Log';
-import WorkoutForm from './Workout-Log/Workout-Form';
-import './Form.css';
+import WorkoutForm from './Workout-Form';
+import '../Form.css';
 
-function WorkoutTracker() {
-    const [workout, setWorkout] = useState({name: '', date: new Date(), exercises: []});
+function AddWorkout(props) {
+    const [workout, setWorkout] = useState({name: '', date: new Date(), exercises: []})
 
     const onChangeWorkoutName = e => {
         setWorkout(prevState => ({...prevState, name: e.target.value}))
-    }
+    };
 
     const onChangeDate = date => {
         setWorkout(prevState => ({...prevState, date: date}))
@@ -30,12 +29,11 @@ function WorkoutTracker() {
 
         setWorkout({name: '', date: new Date(), exercises: []})
 
-        // window.location = '/'
+        window.location = '/workout-tracker'
     }
 
     return (
-        <div>
-            <WorkoutLog/>
+        <div className="edit-box">
             <WorkoutForm
                 type="Add"
                 workout={workout}
@@ -47,4 +45,4 @@ function WorkoutTracker() {
     )
 }
 
-export default WorkoutTracker;
+export default AddWorkout;
