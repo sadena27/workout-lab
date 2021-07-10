@@ -12,9 +12,11 @@ import AddWorkout from './Components/Workout/Add-Workout';
 import AddExercise from './Components/Exercise-Log/Add-Exercise';
 
 function App() {
+  document.body.style.backgroundColor = "#E5ECF4";
   return (
     <BrowserRouter>
       <meta name="viewport" content="width=device-width, initial-scale=1"/>
+      <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'/>
       <div className="app">
         <Navbar/>
         <Switch>

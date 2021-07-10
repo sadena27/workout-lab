@@ -66,7 +66,7 @@ class ExerciseLog extends Component {
                                         })}
                                     </tbody>
                                 </table>
-                                : <p>There are no exercises logged yet. Click the button below to begin adding to this workout's exercise log.</p>
+                                : <p>You have not logged any exercises yet. Click the button below to begin adding to this workout's exercise log.</p>
                             }
                             <Link to={"/workout/" + this.props.match.params.id + "/add-exercise"} className="add-btn">Add a new exercise</Link>
                         </div>

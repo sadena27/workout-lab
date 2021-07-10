@@ -1,5 +1,5 @@
 .homepage {
-    font-family: Archivo, sans-serif;
+    font-family: Montserrat;
 }
 
 .intro {
@@ -54,7 +54,7 @@
     color: black;
 }
 
-.exploreBox {
+#exploreBox {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -128,12 +128,6 @@
 
 .exploreCardText:hover {
     color: #3f8efc;
-}
-
-#learnMore {
-    background-color: #E5ECF4;
-    height: 85vh;
-    padding: 30px 10vw;
 }
 
 @media screen and (max-width: 974px) {

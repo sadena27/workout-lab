@@ -1,5 +1,5 @@
 .log {
-    font-family: Tahoma;
+    font-family: Montserrat;
     border-radius: 30px;
     padding: 50px 60px 20px 60px;
 }
@@ -41,6 +41,11 @@ th {
     text-align: left;
     padding-bottom: 12px;
     color: black;
+    font-size: 18px;
+}
+
+.date {
+    font-weight: bold;
 }
 
 .edit-box {

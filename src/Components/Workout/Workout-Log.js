@@ -8,7 +8,7 @@ import '../Log.css';
 const Workout = props => (
     <tr>
         {props.exercise.date
-            ? <td><Link to={"/workout/" + props.exercise._id} className="link">{(new Date(props.exercise.date.substring(0,19)).toDateString()).substring(4)}</Link></td>
+            ? <td className="date"><Link to={"/workout/" + props.exercise._id} className="link">{(new Date(props.exercise.date.substring(0,19)).toDateString()).substring(4)}</Link></td>
             : <td>No date</td>
         }
         <td>{props.exercise.name}</td>
@@ -63,7 +63,7 @@ class WorkoutLog extends Component {
                                 })}
                             </tbody>
                         </table>
-                        : <p>There are no workouts logged yet. Click the button below to begin adding to your workout log.</p>
+                        : <p>You have not logged any workouts yet. Click the button below to begin adding to your workout log.</p>
                     }
                     <Link to="/workout-tracker/add-workout" className="add-btn">Add a new workout</Link> 
                 </div>
