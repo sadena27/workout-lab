@@ -8,12 +8,10 @@ router.route('/').get((req, res) => {
 });
 
 router.route('/add').post((req, res) => {
-    const username = req.body.username;
     const name = req.body.name;
     const description = req.body.description;
 
     const newExercise = new Exercise({
-        username,
         name,
         description,
     });
@@ -38,7 +36,6 @@ router.route('/:id').delete((req, res) => {
   router.route('/update/:id').post((req, res) => {
     Exercise.findById(req.params.id)
       .then(exercise => {
-        exercise.username = req.body.username;
         exercise.name = req.body.name;
         exercise.description = req.body.description;
   

@@ -4,12 +4,7 @@ import ExerciseForm from './Exercise-Form';
 import '../Form.css';
 
 function EditExercise(props) {
-    const [exercise, setExercise] = useState({username: '', name: '', description: '', users: []});
-    const [users, setUsers] = useState([]);
-
-    const onChangeUsername = e => {
-        setExercise(prevState => ({...prevState, username: e.target.value}))
-    };
+    const [exercise, setExercise] = useState({name: '', description: ''});
 
     const onChangeExerciseName = e => {
         setExercise(prevState => ({...prevState, name: e.target.value}))
@@ -23,7 +18,6 @@ function EditExercise(props) {
         e.preventDefault();
 
         const newExercise = {
-            username: exercise.username,
             name: exercise.name,
             description: exercise.description,
         }
@@ -43,21 +37,10 @@ function EditExercise(props) {
         axios.get('http://localhost:5000/workouts/' + props.match.params.id)
             .then(response => {
                 setExercise({
-                    username: response.data.exercises.username,
                     name: response.data.exercises.name,
                     description: response.data.exercises.description, 
                 })
                 console.log(response.data.exercises)
-            })
-            .catch((error) => {
-                console.log(error);
-            })
-
-        axios.get('http://localhost:5000/users')
-            .then(response => {
-                if (response.data.length > 0) {
-                    setUsers(response.data.map(user => user.username));
-                }
             })
             .catch((error) => {
                 console.log(error);
@@ -72,8 +55,6 @@ function EditExercise(props) {
                 exercise={exercise}
                 onChangeName={onChangeExerciseName}
                 onSubmit={onSubmitExercise}
-                users={users}
-                onChangeUsername={onChangeUsername}
                 onChangeDescription={onChangeDescription}
             />
         </div>

@@ -4,12 +4,7 @@ import ExerciseForm from './Exercise-Form';
 import '../Form.css';
 
 function AddExercise(props) {
-    const [exercise, setExercise] = useState({username: '', name: '', description: '', users: []});
-    const [users, setUsers] = useState([]);
-
-    const onChangeUsername = e => {
-        setExercise(prevState => ({...prevState, username: e.target.value}))
-    };
+    const [exercise, setExercise] = useState({name: '', description: ''});
 
     const onChangeExerciseName = e => {
         setExercise(prevState => ({...prevState, name: e.target.value}))
@@ -23,7 +18,6 @@ function AddExercise(props) {
         e.preventDefault();
 
         const newExercise = {
-            username: exercise.username,
             name: exercise.name,
             description: exercise.description,
         }
@@ -36,7 +30,7 @@ function AddExercise(props) {
                 console.log(error);
             })
 
-        setExercise({...exercise, name: '', description: '', users: []})
+        setExercise({...exercise, name: '', description: ''})
 
         window.location = '/workout/show/' + props.match.params.id
     }
@@ -45,7 +39,6 @@ function AddExercise(props) {
         axios.get('http://localhost:5000/workouts/' + props.match.params.id)
             .then(response => {
                 setExercise({
-                    username: response.data.exercises.username,
                     name: response.data.exercises.name,
                     description: response.data.exercises.description, 
                 })
@@ -54,19 +47,6 @@ function AddExercise(props) {
             .catch((error) => {
                 console.log(error);
             })
-
-
-        axios.get('http://localhost:5000/users')
-        .then(response => {
-            if (response.data.length > 0) {
-                setUsers(response.data.map(user => user.username));
-                setExercise(prevState => ({...prevState, username: response.data[0].username}))
-            }
-        })
-        .catch((error) => {
-            console.log(error);
-        })
-
     }, [props.match.params.id]);
 
     return (
@@ -76,8 +56,6 @@ function AddExercise(props) {
                 exercise={exercise}
                 onChangeName={onChangeExerciseName}
                 onSubmit={onSubmitExercise}
-                users={users}
-                onChangeUsername={onChangeUsername}
                 onChangeDescription={onChangeDescription}
             />
         </div>

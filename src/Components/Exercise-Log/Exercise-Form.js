@@ -8,23 +8,6 @@ function ExerciseForm(props) {
                 <h3>{props.type} Exercise</h3>
                 <form onSubmit={props.onSubmit}>
                     <div className="form-input"> 
-                        <label>Username: </label>
-                        <select
-                            required
-                            className="form-input__box"
-                            value={props.exercise.username}
-                            onChange={props.onChangeUsername}>
-                            {
-                            props.users.map((user) => {
-                                return <option 
-                                    key={user}
-                                    value={user}>{user}
-                                </option>;
-                            })
-                            }
-                        </select>
-                    </div>
-                    <div className="form-input"> 
                         <label>Exercise Name: </label>
                         <input
                             type="text"

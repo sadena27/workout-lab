@@ -8,7 +8,6 @@ import '../Log.css';
 
 const Exercise = props => (
     <tr>
-        <td>{props.exercise.username}</td>
         <td>{props.exercise.name}</td>
         <td>{props.exercise.description}</td>
         <td>
@@ -55,7 +54,6 @@ class ExerciseLog extends Component {
                         <table>
                             <thead>
                                 <tr>
-                                    <th>Username</th>
                                     <th>Exercise</th>
                                     <th>Description</th>
                                     <th></th>
