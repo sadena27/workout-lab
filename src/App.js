@@ -22,11 +22,11 @@ function App() {
           <Route exact path="/exercises" component={ExerciseDatabase}/>
           <Route exact path="/workout-tracker" component={WorkoutLog}/>
           <Route exact path="/sign-in" component={SignIn}/>
-          <Route exact path="/exercise/edit/:id" component={EditExercise}/>
+          <Route exact path="/exercise/edit/:workoutID/:exerciseID" component={EditExercise}/>
           <Route exact path="/workout/edit/:id" component={EditWorkout}/>
-          <Route exact path="/workout/show/:id" component={ExerciseLog}/>
+          <Route exact path="/workout/:id" component={ExerciseLog}/>
           <Route exact path="/workout-tracker/add-workout" component={AddWorkout}/>
-          <Route exact path="/workout/show/:id/add-exercise" component={AddExercise}/>
+          <Route exact path="/workout/:id/add-exercise" component={AddExercise}/>
         </Switch>
       </div>
     </BrowserRouter>

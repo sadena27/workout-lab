@@ -24,29 +24,27 @@ function EditExercise(props) {
 
         console.log(newExercise);
 
-        axios.post('http://localhost:5000/exercises/update/' + props.match.params.id, exercise)
+        axios.post('http://localhost:5000/workouts/editExercise/' + props.match.params.workoutID + "/" + props.match.params.exerciseID, newExercise)
             .then(res => console.log(res.data))
             .catch((error) => {
                 console.log(error);
             })
 
-        window.location = '/workout-tracker'
+        window.location = '/workout/' + props.match.params.workoutID
     }
 
     useEffect(() => {
-        axios.get('http://localhost:5000/workouts/' + props.match.params.id)
+        axios.get('http://localhost:5000/workouts/' + props.match.params.workoutID + "/" + props.match.params.exerciseID)
             .then(response => {
                 setExercise({
-                    name: response.data.exercises.name,
-                    description: response.data.exercises.description, 
+                    name: response.data.name,
+                    description: response.data.description, 
                 })
-                console.log(response.data.exercises)
             })
             .catch((error) => {
                 console.log(error);
             })
-        console.log("edit effect ran")
-    }, [props.match.params.id]);
+    }, [props.match.params.workoutID, props.match.params.exerciseID]);
 
     return (
         <div className="edit-box">

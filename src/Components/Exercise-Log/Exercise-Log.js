@@ -11,7 +11,7 @@ const Exercise = props => (
         <td>{props.exercise.name}</td>
         <td>{props.exercise.description}</td>
         <td>
-            <Link to={"/exercise/edit/" + props.exercise._id} className="action-btn"><EditIcon/></Link> 
+            <Link to={"/exercise/edit/" + props.workoutID + "/" + props.exercise._id} className="action-btn"><EditIcon/></Link> 
             <button onClick={() => {props.deleteExercise(props.exercise._id)}} className="action-btn"><DeleteIcon/></button>
         </td>
     </tr>
@@ -61,11 +61,11 @@ class ExerciseLog extends Component {
                             </thead>
                             <tbody>
                                 {this.state.exercises.map(currExercise => {
-                                    return <Exercise exercise={currExercise} deleteExercise={this.deleteExercise} key={currExercise._id}/>;
+                                    return <Exercise exercise={currExercise} deleteExercise={this.deleteExercise} workoutID={this.props.match.params.id} key={currExercise._id}/>;
                                 })}
                             </tbody>
                         </table>
-                        <Link to={"/workout/show/" + this.props.match.params.id + "/add-exercise"} className="">Add Exercise</Link>
+                        <Link to={"//" + this.props.match.params.id + "/add-exercise"} className="">Add Exercise</Link>
                     </div>
             )
         } else {
@@ -74,7 +74,7 @@ class ExerciseLog extends Component {
                      <div className="loading">
                         <Loader type="Oval" color="#3f8efc" height={120} width={120}/>
                     </div>
-                    <Link to={"/workout/show/" + this.props.match.params.id + "/add-exercise"} className="">Add Exercise</Link>
+                    <Link to={"/workout/" + this.props.match.params.id + "/add-exercise"} className="">Add Exercise</Link>
                 </div>
             )
         }

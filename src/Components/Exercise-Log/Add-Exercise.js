@@ -24,7 +24,7 @@ function AddExercise(props) {
 
         console.log(newExercise);
 
-        axios.post('http://localhost:5000/workouts/updateExercise/' + props.match.params.id, newExercise)
+        axios.post('http://localhost:5000/workouts/addExercise/' + props.match.params.id, newExercise)
             .then(res => console.log(res.data))
             .catch((error) => {
                 console.log(error);
@@ -32,7 +32,7 @@ function AddExercise(props) {
 
         setExercise({...exercise, name: '', description: ''})
 
-        window.location = '/workout/show/' + props.match.params.id
+        window.location = '//' + props.match.params.id
     }
 
     useEffect(() => {
