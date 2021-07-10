@@ -19,7 +19,7 @@ function EditWorkout(props) {
 
         const newWorkout = {
             name: workout.name,
-            description: workout.description,
+            date: workout.date,
             exercises: workout.exercises
         }
 

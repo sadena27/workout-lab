@@ -10,9 +10,9 @@ const Exercise = props => (
     <tr>
         <td>{props.exercise.name}</td>
         <td>{props.exercise.description}</td>
-        <td>
-            <Link to={"/exercise/edit/" + props.workoutID + "/" + props.exercise._id} className="action-btn"><EditIcon/></Link> 
-            <button onClick={() => {props.deleteExercise(props.exercise._id)}} className="action-btn"><DeleteIcon/></button>
+        <td className="actions">
+            <Link to={"/exercise/edit/" + props.workoutID + "/" + props.exercise._id} className="actions-btn"><EditIcon/></Link> 
+            <button onClick={() => {props.deleteExercise(props.exercise._id)}} className="actions-btn"><DeleteIcon/></button>
         </td>
     </tr>
 )
@@ -50,22 +50,26 @@ class ExerciseLog extends Component {
         if (this.state.name ) {
             return (
                     <div className="log">
-                        <h3>{this.state.name} - {this.state.date}</h3>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Exercise</th>
-                                    <th>Description</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {this.state.exercises.map(currExercise => {
-                                    return <Exercise exercise={currExercise} deleteExercise={this.deleteExercise} workoutID={this.props.match.params.id} key={currExercise._id}/>;
-                                })}
-                            </tbody>
-                        </table>
-                        <Link to={"//" + this.props.match.params.id + "/add-exercise"} className="">Add Exercise</Link>
+                        <div className="log__exercise">
+                            <h3>{this.state.date} - {this.state.name}</h3>
+                            {this.state.exercises.length !== 0
+                                ? <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Exercise</th>
+                                            <th>Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {this.state.exercises.map(currExercise => {
+                                            return <Exercise exercise={currExercise} deleteExercise={this.deleteExercise} workoutID={this.props.match.params.id} key={currExercise._id}/>;
+                                        })}
+                                    </tbody>
+                                </table>
+                                : <p>There are no exercises logged yet. Click the button below to begin adding to this workout's exercise log.</p>
+                            }
+                            <Link to={"/workout/" + this.props.match.params.id + "/add-exercise"} className="add-btn">Add a new exercise</Link>
+                        </div>
                     </div>
             )
         } else {
@@ -74,7 +78,7 @@ class ExerciseLog extends Component {
                      <div className="loading">
                         <Loader type="Oval" color="#3f8efc" height={120} width={120}/>
                     </div>
-                    <Link to={"/workout/" + this.props.match.params.id + "/add-exercise"} className="">Add Exercise</Link>
+                    <Link to={"/workout/" + this.props.match.params.id + "/add-exercise"} className="add-btn">Add a new exercise</Link>
                 </div>
             )
         }

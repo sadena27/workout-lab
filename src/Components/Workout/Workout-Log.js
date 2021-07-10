@@ -7,15 +7,14 @@ import '../Log.css';
 
 const Workout = props => (
     <tr>
-        <td><Link to={"/workout/" + props.exercise._id} className="link">{props.exercise.name}</Link></td>
         {props.exercise.date
-            ? <td>{(new Date(props.exercise.date.substring(0,19)).toDateString()).substring(4)}</td>
+            ? <td><Link to={"/workout/" + props.exercise._id} className="link">{(new Date(props.exercise.date.substring(0,19)).toDateString()).substring(4)}</Link></td>
             : <td>No date</td>
         }
-        <td></td>
-        <td>
-            <Link to={"/workout/edit/" + props.exercise._id} className="action-btn"><EditIcon/></Link> 
-            <button onClick={() => {props.deleteWorkout(props.exercise._id)}} className="action-btn"><DeleteIcon/></button>
+        <td>{props.exercise.name}</td>
+        <td className="actions">
+            <Link to={"/workout/edit/" + props.exercise._id} className="actions-btn"><EditIcon/></Link> 
+            <button onClick={() => {props.deleteWorkout(props.exercise._id)}} className="actions-btn"><DeleteIcon/></button>
         </td>
     </tr>
 )
@@ -47,23 +46,27 @@ class WorkoutLog extends Component {
     render() {
         return (
             <div className="log">
-                <h3>Logged Workouts</h3>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Workout Name</th>
-                            <th>Date</th>
-                            <th></th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {this.state.workouts.map(currWorkout => {
-                            return <Workout exercise={currWorkout} deleteWorkout={this.deleteWorkout} key={currWorkout._id}/>;
-                        })}
-                    </tbody>
-                </table>
-                <Link to="/workout-tracker/add-workout" className="">Add Workout</Link> 
+                <div className="log__workout">
+                    <h3>Workout Log</h3>
+                    {this.state.workouts.length !== 0
+                        ? <table>
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Name</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {this.state.workouts.map(currWorkout => {
+                                    return <Workout exercise={currWorkout} deleteWorkout={this.deleteWorkout} key={currWorkout._id}/>;
+                                })}
+                            </tbody>
+                        </table>
+                        : <p>There are no workouts logged yet. Click the button below to begin adding to your workout log.</p>
+                    }
+                    <Link to="/workout-tracker/add-workout" className="add-btn">Add a new workout</Link> 
+                </div>
             </div>
         )
     }

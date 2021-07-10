@@ -1,27 +1,46 @@
 .log {
-    width: 695px;
-    margin: auto;
     font-family: Tahoma;
-    background-color: #E5ECF4;
     border-radius: 30px;
-    padding-left: 60px;
-    padding-bottom: 20px;
-    padding-right: 60px;
+    padding: 50px 60px 20px 60px;
+}
+
+.log__workout {
+    width: 800px;
+    margin: auto;
+}
+
+.log__exercise {
+    width: 900px;
+    margin: auto
 }
 
 .log h3 {
-    width: 800px;
+    width: 900px;
     padding-left: 2px;
     font-size: 40px;
-    margin-top: 90px;
+    margin-top: 0px;
     margin-bottom: 20px;
-    padding-top: 15px;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 20px 0px;
+    width: 100%;
+    margin-bottom: 25px;
+}
+
+tr {
+    border-bottom: 1px solid #bbbbbb;
+}
+
+td {
+    padding: 7px 0px;
 }
 
 th {
-    border: 1px solid transparent;
-    padding-right: 60px;
     text-align: left;
+    padding-bottom: 12px;
+    color: black;
 }
 
 .edit-box {
@@ -35,10 +54,14 @@ th {
 }
 
 .link:hover {
-    color: #3f5ffc
+    color: #0464eb
 }
 
-.action-btn {
+.actions {
+    text-align: right;
+}
+
+.actions-btn {
     background: transparent;
     border: none;
     cursor: pointer;
@@ -46,7 +69,7 @@ th {
     color: black;
 }
 
-.action-btn:hover {
+.actions-btn:hover {
     color: #3f8efc;
 }
 
@@ -55,4 +78,22 @@ th {
     flex-direction: column;
     align-items: center;
     margin-top: 20vh;
+}
+
+.add-btn {
+    color: white;
+    background-color: #bbbbbb;
+    border: none;
+    border-radius: 9px;
+    padding: 8px;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.add-btn:hover {
+    background-color: #0464eb;
+}
+
+p {
+    padding-bottom: 10px;
 }

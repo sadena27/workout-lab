@@ -32,7 +32,7 @@ function AddExercise(props) {
 
         setExercise({...exercise, name: '', description: ''})
 
-        window.location = '//' + props.match.params.id
+        window.location = '/workout/' + props.match.params.id
     }
 
     useEffect(() => {
