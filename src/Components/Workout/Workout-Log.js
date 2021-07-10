@@ -7,14 +7,14 @@ import '../Log.css';
 
 const Workout = props => (
     <tr>
-        {props.exercise.date
-            ? <td className="date"><Link to={"/workout/" + props.exercise._id} className="link">{(new Date(props.exercise.date.substring(0,19)).toDateString()).substring(4)}</Link></td>
+        {props.workout.date
+            ? <td className="date"><Link to={"/workout/" + props.workout._id} className="link">{(new Date(props.workout.date.substring(0,19)).toDateString()).substring(4)}</Link></td>
             : <td>No date</td>
         }
-        <td>{props.exercise.name}</td>
+        <td>{props.workout.name}</td>
         <td className="actions">
-            <Link to={"/workout/edit/" + props.exercise._id} className="actions-btn"><EditIcon/></Link> 
-            <button onClick={() => {props.deleteWorkout(props.exercise._id)}} className="actions-btn"><DeleteIcon/></button>
+            <Link to={"/workout/edit/" + props.workout._id} className="actions-btn"><EditIcon/></Link> 
+            <button onClick={() => {props.deleteWorkout(props.workout._id)}} className="actions-btn"><DeleteIcon/></button>
         </td>
     </tr>
 )
@@ -30,7 +30,8 @@ class WorkoutLog extends Component {
     componentDidMount() {
         axios.get('http://localhost:5000/workouts/')
             .then(response => {
-                this.setState({workouts: response.data})
+                this.setState({workouts: response.data.slice().sort((workout1, workout2) => new Date(workout2.date) - new Date(workout1.date))})
+                console.log(response.data)
             })
             .catch((error) => {
                 console.log(error)
@@ -59,7 +60,7 @@ class WorkoutLog extends Component {
                             </thead>
                             <tbody>
                                 {this.state.workouts.map(currWorkout => {
-                                    return <Workout exercise={currWorkout} deleteWorkout={this.deleteWorkout} key={currWorkout._id}/>;
+                                    return <Workout workout={currWorkout} deleteWorkout={this.deleteWorkout} key={currWorkout._id}/>;
                                 })}
                             </tbody>
                         </table>
