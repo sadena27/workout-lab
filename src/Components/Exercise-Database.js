@@ -44,13 +44,7 @@ function ExerciseDatabase() {
                 </div>
              :  exercises.map(exercise => (
                     <div className="exercises__box">
-                        {/* {exercises.length == 0 ? (<a href={exercise.image} target="_blank">{"test"}</a>) :
-                        (<a href={exercise.image} target="_blank">{exercises.find(
-                            exercise => exercise.id == 289
-                        ).name}</a>)} */}
-                        <a href={`http://www.google.com/search?q=${exercise.name}`} target="_blank" rel="noreferrer">{exercise.id} {exercise.name}</a>
-                        <p/>
-                        {/* <img src={exercise.image} alt="exercise image"/> */}
+                        <a href={`http://www.google.com/search?q=${exercise.name}`} target="_blank" rel="noreferrer">{exercise.name}</a>
                         <div className="exercises__box__bodies">
                             <Model
                                 data={[

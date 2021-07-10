@@ -1,5 +1,5 @@
 .exercises {
-    margin: 10px 100px;
+    margin: 80px 100px;
     display: flex;
     justify-content: space-evenly;
     flex-flow: wrap;
@@ -7,8 +7,6 @@
 }
 
 .exercises__box {
-    display: flex;
-    flex-direction: column;
     text-align: center;
     border-radius: 10px;
     width: 210px;
@@ -17,6 +15,8 @@
     padding: 5px;
     margin: 12px 10px;
     transition: all 170ms ease-in-out;
+    position: relative;
+    background-color: #eaeff6;
 }
 
 .exercises__box:hover {
@@ -26,6 +26,10 @@
 .exercises__box a {
     color: black;
     text-decoration: none;
+    position: absolute;
+    left: 3%;
+    width: 93%;
+    top: 6%;
 }
 
 .exercises__box a:hover {
@@ -36,6 +40,12 @@
 .exercises__box__bodies {
     display: flex;
     justify-content: space-around;
+    position: relative;
+    width: auto;
+    position: absolute;
+    bottom: 10%;
+    left: 6%;
+    right: 6%;
 }
 
 .loading {
