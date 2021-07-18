@@ -13,18 +13,24 @@ function ExerciseForm(props) {
                             type="text"
                             required
                             className="form-input__box"
-                            value={props.exercise.name}
+                            value={props.exercise.name
+                                ? props.exercise.name
+                                : ""
+                            }
                             onChange={props.onChangeName}
-                            />
+                        />
                     </div>
                     <div className="form-input">
                         <label>Description: </label>
                         <input 
                             type="text" 
                             className="form-input__box"
-                            value={props.exercise.description}
+                            value={props.exercise.description
+                                ? props.exercise.description
+                                : ""
+                            }
                             onChange={props.onChangeDescription}
-                            />
+                        />
                     </div>
                     <input type="submit" value={props.type + " Exercise"} className="add-btn"/>
                 </form>
