@@ -51,7 +51,10 @@ class ExerciseLog extends Component {
             return (
                     <div className="log">
                         <div className="log__exercise">
-                            <h3>{this.state.date} - {this.state.name}</h3>
+                            <div className="log__header">
+                                <h3>{this.state.date} - {this.state.name}</h3>
+                                <Link to={"/workout/" + this.props.match.params.id + "/add-exercise"} className="add-btn">Add a new exercise</Link>
+                            </div>
                             {this.state.exercises.length !== 0
                                 ? <table>
                                     <thead>
@@ -66,9 +69,8 @@ class ExerciseLog extends Component {
                                         })}
                                     </tbody>
                                 </table>
-                                : <p>You have not logged any exercises yet. Click the button below to begin adding to this workout's exercise log.</p>
+                                : <p>You have not logged any exercises yet. Click add a new exercise to begin adding to this workout's exercise log.</p>
                             }
-                            <Link to={"/workout/" + this.props.match.params.id + "/add-exercise"} className="add-btn">Add a new exercise</Link>
                         </div>
                     </div>
             )
@@ -78,7 +80,6 @@ class ExerciseLog extends Component {
                      <div className="loading">
                         <Loader type="Oval" color="#3f8efc" height={120} width={120}/>
                     </div>
-                    <Link to={"/workout/" + this.props.match.params.id + "/add-exercise"} className="add-btn">Add a new exercise</Link>
                 </div>
             )
         }

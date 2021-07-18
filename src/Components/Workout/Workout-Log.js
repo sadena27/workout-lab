@@ -8,7 +8,12 @@ import '../Log.css';
 const Workout = props => (
     <tr>
         {props.workout.date
-            ? <td className="date"><Link to={"/workout/" + props.workout._id} className="link">{(new Date(props.workout.date.substring(0,19)).toDateString()).substring(4)}</Link></td>
+            ? <td className="date">
+                <Link
+                    to={"/workout/" + props.workout._id}
+                    className="link">{(new Date(props.workout.date.substring(0,19)).toDateString()).substring(4)}
+                </Link>
+            </td>
             : <td>No date</td>
         }
         <td>{props.workout.name}</td>
@@ -30,7 +35,7 @@ class WorkoutLog extends Component {
     componentDidMount() {
         axios.get('http://localhost:5000/workouts/')
             .then(response => {
-                this.setState({workouts: response.data.slice().sort((workout1, workout2) => new Date(workout2.date) - new Date(workout1.date))})
+                this.setState({workouts: response.data.sort((workout1, workout2) => new Date(workout2.date) - new Date(workout1.date))})
                 console.log(response.data)
             })
             .catch((error) => {
@@ -48,7 +53,10 @@ class WorkoutLog extends Component {
         return (
             <div className="log">
                 <div className="log__workout">
-                    <h3>Workout Log</h3>
+                    <div className="log__header">
+                        <h3>Workout Log</h3>
+                        <Link to="/workout-tracker/add-workout" className="add-btn">Add a new workout</Link> 
+                    </div>
                     {this.state.workouts.length !== 0
                         ? <table>
                             <thead>
@@ -64,9 +72,8 @@ class WorkoutLog extends Component {
                                 })}
                             </tbody>
                         </table>
-                        : <p>You have not logged any workouts yet. Click the button below to begin adding to your workout log.</p>
+                        : <p>You have not logged any workouts yet. Click add a new workout to begin adding to your workout log.</p>
                     }
-                    <Link to="/workout-tracker/add-workout" className="add-btn">Add a new workout</Link> 
                 </div>
             </div>
         )
