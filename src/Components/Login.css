@@ -1,33 +1,53 @@
-.form {
+.sign {
+    margin-top: 100px;
+}
+
+.login-form {
     font-family: Montserrat;
-    width: 600px;
+    width: 450px;
     margin: 30px auto;
     padding: 15px 50px;
     background-color: #c9d8e8;
     border-radius: 25px;
 }
 
-.form-input {
-    margin: 10px 0px;
+.sign-up {
+    text-align: center;
+}
+
+.input {
+    margin: 5px 0px;
     display: flex;
     flex-direction: column;
 }
 
-.form-input__box {
+.input__box {
     margin: 10px 0px;
 }
 
-.add-btn {
+.submit-btn {
     color: white;
     background-color: #3f8efc;
     border: none;
     border-radius: 9px;
     padding: 8px;
     font-size: 16px;
-    margin: 10px 0px;
     cursor: pointer;
+    width: 100%;
 }
 
-.add-btn:hover {
+.sign-up p {
+    margin-bottom: 0px;
+}
+
+.sign-up-btn {
+    color: #0464eb;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.submit-btn:hover {
     background-color: #0464eb;
 }

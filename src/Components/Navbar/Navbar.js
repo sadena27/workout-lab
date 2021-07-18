@@ -38,7 +38,7 @@ function Navbar() {
                     to="/sign-in"
                     onClick={() => toggle(false)}
                     className={toggled ? "navbar-menu__items" : "navbar-pages__items"}>
-                        SIGN IN
+                        LOGIN
                 </Link>
             </div>
         </div>
