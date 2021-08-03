@@ -83,7 +83,18 @@ app.post('/signup', (req, res) => {
 
 app.get('/user', (req, res) => {
     res.send(JSON.stringify(req.user));
-});;
+});
+
+app.get('/logout', (req, res, next) => {
+    req.logout();
+    req.session.destroy(function (err) {
+        if (err) {
+            return next(err);
+        }
+        // The response should indicate that the user is no longer authenticated.
+        return res.send({ authenticated: req.isAuthenticated() });
+    });
+});
 
 const uri = process.env.ATLAS_URI;
 mongoose.connect(uri, {useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true});

@@ -67,3 +67,18 @@
 td, th {
     padding: 8px;
 }
+
+.logout-btn {
+    color: white;
+    background-color: #3f8efc;
+    border: none;
+    border-radius: 10px;
+    padding: 8px 14px;
+    font-size: 18px;
+    margin: 20px 0px;
+    cursor: pointer;
+}
+
+.logout-btn:hover {
+    background-color: #0464eb;
+}

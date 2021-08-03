@@ -35,7 +35,14 @@ function Login(props) {
             .catch((error) => {
                 console.log(error);
             })
-    },);
+    }, []);
+
+    const logout = () => {
+        axios.get('http://localhost:5000/logout/', { withCredentials: true })
+            .then(res => console.log(res.data));
+
+        window.location = '/login'
+    }
 
     return (
         <div>
@@ -43,19 +50,26 @@ function Login(props) {
             ? <div className="account">
                 <h1>Welcome to Workout Lab, {loggedUser.firstName}.</h1>
                 <table className="account-info">
-                    <tr>
-                        <th>First Name</th>
-                        <td>{loggedUser.firstName}</td>
-                    </tr>
-                    <tr>
-                        <th>Last Name</th>
-                        <td>{loggedUser.lastName}</td>
-                    </tr>
-                    <tr>
-                        <th>Email</th>
-                        <td>{loggedUser.email}</td>
-                    </tr>
+                    <tbody>
+                        <tr>
+                            <th>First Name</th>
+                            <td>{loggedUser.firstName}</td>
+                        </tr>
+                    </tbody>
+                    <tbody>
+                        <tr>
+                            <th>Last Name</th>
+                            <td>{loggedUser.lastName}</td>
+                        </tr>
+                    </tbody>
+                    <tbody>
+                        <tr>
+                            <th>Email</th>
+                            <td>{loggedUser.email}</td>
+                        </tr>
+                    </tbody>
                 </table>
+                <button onClick={logout} className="logout-btn">Logout</button>
             </div>
             : <div className="sign">
                 <div className="login-form">
