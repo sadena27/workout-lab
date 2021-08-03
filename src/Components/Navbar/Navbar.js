@@ -33,7 +33,7 @@ function Navbar() {
              <button onClick={() => toggle(!toggled)}>
                 {toggleIcon}
             </button>
-            <Link to="/">
+            <Link to="/" onClick={() => toggle(false)}>
                 <img src="workout-lab-logo.png" alt="Workout Lab Logo" className="navbar-logo"/>
             </Link>
             <div className={toggled ? "navbar-menu" : "navbar-pages"}>

@@ -30,16 +30,17 @@ class WorkoutLog extends Component {
 
         this.state = {workouts: [], user: ''};
         this.deleteWorkout = this.deleteWorkout.bind(this);
+        this.getLog = this.getLog.bind(this);
     }
 
-    componentDidMount() {
-        axios.get('http://localhost:5000/user', { withCredentials: true })
+    async getLog() {
+        await axios.get('http://localhost:5000/user', { withCredentials: true })
         .then(res => this.setState(prevState => ({
             ...prevState, user: res.data.email
         })))
         .catch((error) => console.log(error))
 
-        axios.get('http://localhost:5000/workouts/')
+        await axios.get('http://localhost:5000/workouts/')
             .then(response => {
                 this.setState({
                     workouts: (response.data.filter(workout => workout.user === this.state.user))
@@ -48,6 +49,10 @@ class WorkoutLog extends Component {
             .catch((error) => {
                 console.log(error)
             })
+    }
+
+    componentDidMount() {
+        this.getLog()
     }
  
     deleteWorkout(id) {
@@ -89,7 +94,13 @@ class WorkoutLog extends Component {
                             <div className="log__header">
                                     <h3>Workout Log</h3>
                             </div>
-                            <p>Login to view logged workouts</p>
+                            <p>Login to view logged workouts.</p>
+                            <div className="showcase">
+                                <h2>Sample workout log: </h2>
+                                <img src="workout_log.png" alt="workout log example"></img>
+                                <h2>Sample exercise log: </h2>
+                                <img src="exercise_log.png" alt="exercise log example"></img>
+                            </div>
                         </div>
                     }
                 </div>

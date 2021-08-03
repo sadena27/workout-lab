@@ -26,7 +26,7 @@ function Homepage() {
                     <h1>WELCOME TO THE WORKOUT LAB.</h1>
                     <a href="#learnMore" className="intro__button">Learn More</a>
                     {loggedIn
-                    ? <></>
+                    ? <Link to="/login" className="intro__button">Account</Link>
                     : <Link to="/login" className="intro__button">Login</Link>
                     }
                 </div>
@@ -46,11 +46,11 @@ function Homepage() {
             </div>
             <div id="learnMore">
                 <div className="showcase">
-                    <h2>Sample workout log: </h2>
+                    <h2>Sample workout log:</h2>
                     <img src="workout_log.png" alt="workout log example"></img>
-                    <h2>Sample exercise log: </h2>
+                    <h2>Sample exercise log:</h2>
                     <img src="exercise_log.png" alt="exercise log example"></img>
-                    <h2>Explore exercise database: </h2>
+                    <h2>Explore exercise database with 260+ exercises:</h2>
                     <img src="explore_exercises.png" alt="exercise log example"></img>
                 </div>
             </div>

@@ -5,12 +5,12 @@
 }
 
 .log__workout {
-    width: 800px;
+    width: 80vw;
     margin: auto;
 }
 
 .log__exercise {
-    width: 900px;
+    width: 80vw;
     margin: auto
 }
 
@@ -99,6 +99,7 @@ th {
     font-size: 14px;
     text-decoration: none;
     height: 100%;
+    text-align: center;
 }
 
 .add-btn:hover {
@@ -107,4 +108,61 @@ th {
 
 p {
     padding-bottom: 10px;
+}
+
+.showcase {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.showcase img {
+    width: 700px;
+    border: 1px solid #bbbbbb;
+}
+
+@media screen and (max-width: 420px) {
+    .log__workout {
+        width: 300px;
+        margin: auto;
+    }
+    
+    .log__exercise {
+        width: 300px;
+        margin: auto
+    }
+
+    .log h3 {
+        width: 200px;
+        padding-left: 2px;
+        font-size: 22px;
+        margin-top: 0px;
+        margin-bottom: 20px;
+    }
+
+    .add-btn {
+        border-radius: 9px;
+        padding: 7px;
+        font-size: 10px;
+        text-decoration: none;
+        height: 100%;
+        width: 120px;
+    }
+    
+    td, th {
+        font-size: 11px;
+    }
+
+    .link {
+        font-size: 12px;
+    }
+
+    .actions-btn {
+        font-size: 8px;
+    }
+
+    .actions {
+        text-align: right;
+        width: 65px;
+    }
 }

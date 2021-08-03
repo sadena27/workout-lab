@@ -48,7 +48,6 @@ app.post('/login', (req, res, next) => {
                     throw err;
                 }
                 res.send("Successfully logged in");
-                console.log(req.user);
             })
         } else {
             res.send("No user exists");

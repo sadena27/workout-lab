@@ -24,7 +24,7 @@ function WorkoutForm(props) {
                             <DatePicker selected={props.workout.date} onChange={props.onChangeDate}/>
                         </div>
                     </div>
-                    <input type="submit" value={props.type + " Workout"} className="add-btn"/>
+                    <input type="submit" value={props.type + " Workout"} className="add-btn-form"/>
                 </form>
         </div>
     )

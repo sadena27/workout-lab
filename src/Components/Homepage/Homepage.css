@@ -126,7 +126,6 @@
 }
 
 #learnMore {
-    height: 90vh;
     background: #E5ECF4;
 }
 
@@ -134,11 +133,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 10px;
+    padding-top: 10px;
 }
 
 .showcase img {
-    padding: 20px;
+    padding: 10px;
+    margin-bottom: 25px;
     width: 700px;
     border: 1px solid #bbbbbb;
 }
@@ -165,10 +165,37 @@
     .exploreBox__card{
         font-size: 5vw;
     }
+}
 
+@media screen and (max-width: 420px) {
+    .navbar-logo {
+        position: relative;
+        width: 200px;
+        padding: 10px 0px 5px 20px;
+    }
+
+    .homepage {
+        font-family: Montserrat;
+        margin-top: -15px;
+    }
+
+    .exploreBox {
+        min-height: 60vh;
+        height: auto;
+        padding: 10px 0px;
+    }
+    
     .showcase img {
-        padding: 20px;
-        width: 280px;
-        border: 1px solid #bbbbbb;
+        max-width: 280px;
+    }
+
+    .showcase h2 {
+        font-size: 14px;
+        margin: 10px 5px;
+    }
+
+    .exploreBox__card {
+        width: 45vw;
+        height: 45vw;
     }
 }

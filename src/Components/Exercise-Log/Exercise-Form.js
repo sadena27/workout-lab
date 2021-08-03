@@ -32,7 +32,7 @@ function ExerciseForm(props) {
                             onChange={props.onChangeDescription}
                         />
                     </div>
-                    <input type="submit" value={props.type + " Exercise"} className="add-btn"/>
+                    <input type="submit" value={props.type + " Exercise"} className="add-btn-form"/>
                 </form>
             </div>
         </div>

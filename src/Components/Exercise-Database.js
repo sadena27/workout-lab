@@ -43,7 +43,7 @@ function ExerciseDatabase() {
                     <Loader type="Oval" color="#3f8efc" height={120} width={120}/>
                 </div>
              :  exercises.map(exercise => (
-                    <div className="exercises__box">
+                    <div className="exercises__box" key={exercise.name}>
                         <a href={`http://www.google.com/search?q=${exercise.name}`} target="_blank" rel="noreferrer">{exercise.name}</a>
                         <div className="exercises__box__bodies">
                             <Model

@@ -17,7 +17,7 @@
     margin: 10px 0px;
 }
 
-.add-btn {
+.add-btn-form {
     color: white;
     background-color: #3f8efc;
     border: none;
@@ -28,6 +28,6 @@
     cursor: pointer;
 }
 
-.add-btn:hover {
+.add-btn-form:hover {
     background-color: #0464eb;
 }
