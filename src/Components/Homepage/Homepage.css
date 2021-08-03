@@ -140,7 +140,7 @@
 .showcase img {
     padding: 20px;
     width: 700px;
-    border: 1px solid #3f8efc;
+    border: 1px solid #bbbbbb;
 }
 
 @media screen and (max-width: 974px) {
@@ -164,5 +164,11 @@
 
     .exploreBox__card{
         font-size: 5vw;
+    }
+
+    .showcase img {
+        padding: 20px;
+        width: 280px;
+        border: 1px solid #bbbbbb;
     }
 }

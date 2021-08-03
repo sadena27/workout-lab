@@ -1,15 +1,34 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { Link } from 'react-router-dom';
 import './Homepage.css';
 
 function Homepage() {
+    const [loggedIn, setLoggedIn] = useState(false)
+
+    useEffect(() => {
+        axios.get('http://localhost:5000/user/', { withCredentials: true })
+            .then(response => {
+                if (response.data) {
+                    setLoggedIn(true);
+                    console.log(response.data)
+                }
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    }, []);
+
     return (
         <div className="homepage">
             <div className="intro">
                 <div className="intro__info">
                     <h1>WELCOME TO THE WORKOUT LAB.</h1>
                     <a href="#learnMore" className="intro__button">Learn More</a>
-                    <Link to="/login" className="intro__button">Login</Link>
+                    {loggedIn
+                    ? <></>
+                    : <Link to="/login" className="intro__button">Login</Link>
+                    }
                 </div>
                 <img src="homepage_background.jpg" alt="man deadlifting"></img>
             </div>
@@ -31,6 +50,8 @@ function Homepage() {
                     <img src="workout_log.png" alt="workout log example"></img>
                     <h2>Sample exercise log: </h2>
                     <img src="exercise_log.png" alt="exercise log example"></img>
+                    <h2>Explore exercise database: </h2>
+                    <img src="explore_exercises.png" alt="exercise log example"></img>
                 </div>
             </div>
         </div>
