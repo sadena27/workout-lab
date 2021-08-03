@@ -29,7 +29,7 @@ function SignUp() {
         axios.post('http://localhost:5000/signup', user, { withCredentials: true })
             .then(res => console.log(res.data));
         
-        // window.location = '/login';
+        window.location = '/login';
     }
 
     return (
@@ -69,7 +69,7 @@ function SignUp() {
                     <div className="input">
                         <label>Password</label>
                         <input
-                            type="text"
+                            type="password"
                             required
                             className="input__box"
                             placeholder="Password"
