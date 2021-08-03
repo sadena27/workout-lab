@@ -69,7 +69,7 @@ class ExerciseLog extends Component {
                                         })}
                                     </tbody>
                                 </table>
-                                : <p>You have not logged any exercises yet. Click add a new exercise to begin adding to this workout's exercise log.</p>
+                                : <p>Click add a new exercise to begin adding to this workout's exercise log.</p>
                             }
                         </div>
                     </div>

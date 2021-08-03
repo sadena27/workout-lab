@@ -24,7 +24,7 @@ function App() {
           <Route exact path="/" component={Homepage}/>
           <Route exact path="/exercises" component={ExerciseDatabase}/>
           <Route exact path="/workout-tracker" component={WorkoutLog}/>
-          <Route exact path="/sign-in" component={Login}/>
+          <Route exact path="/login" component={Login}/>
           <Route exact path="/sign-up" component={SignUp}/>
           <Route exact path="/exercise/edit/:workoutID/:exerciseID" component={EditExercise}/>
           <Route exact path="/workout/edit/:id" component={EditWorkout}/>

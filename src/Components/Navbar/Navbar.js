@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { BsList, BsX } from 'react-icons/bs';
 import './Navbar.css';
 
 function Navbar() {
     const [toggled, toggle] = useState(false);
+    const [loggedIn, setLoggedIn] = useState(false)
     let toggleIcon;
 
     if (toggled) {
@@ -12,6 +14,19 @@ function Navbar() {
     } else {
         toggleIcon = <BsList/>
     }
+
+    useEffect(() => {
+        axios.get('http://localhost:5000/user/', { withCredentials: true })
+            .then(response => {
+                if (response.data) {
+                    setLoggedIn(true);
+                    console.log(response.data)
+                }
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    },);
 
     return (
         <div className="navbar">
@@ -34,12 +49,20 @@ function Navbar() {
                     className={toggled ? "navbar-menu__items" : "navbar-pages__items"}>
                         WORKOUT TRACKER
                 </Link>
-                <Link
-                    to="/sign-in"
+                {loggedIn
+                ? <Link
+                    to="/login"
+                    onClick={() => toggle(false)}
+                    className={toggled ? "navbar-menu__items" : "navbar-pages__items"}>
+                    ACCOUNT
+                </Link>
+                : <Link
+                    to="/login"
                     onClick={() => toggle(false)}
                     className={toggled ? "navbar-menu__items" : "navbar-pages__items"}>
                         LOGIN
                 </Link>
+                }
             </div>
         </div>
     )

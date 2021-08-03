@@ -10,11 +10,13 @@ router.route('/').get((req, res) => {
 
 // Adds a new workout
 router.route('/add').post((req, res) => {
+    const user = req.body.user;
     const name = req.body.name;
     const date = Date.parse(req.body.date);
     const exercises = req.body.exercises;
 
     const newWorkout = new Workout({
+        user,
         name,
         date,
         exercises

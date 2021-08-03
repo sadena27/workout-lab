@@ -1,48 +1,73 @@
-import React, { useState } from 'react';
+import React, { Component } from 'react';
 import axios from 'axios';
 import WorkoutForm from './Workout-Form';
 import '../Form.css';
 
-function AddWorkout(props) {
-    const [workout, setWorkout] = useState({name: '', date: new Date(), exercises: []})
+class AddWorkout extends Component {
+    constructor(props) {
+        super(props);
 
-    const onChangeWorkoutName = e => {
-        setWorkout(prevState => ({...prevState, name: e.target.value}))
-    };
+        this.state = {
+            workout: {name: '', date: new Date(), exercises: []},
+            user: ''
+        };
 
-    const onChangeDate = date => {
-        setWorkout(prevState => ({...prevState, date: date}))
-    };
+        this.onChangeWorkoutName = this.onChangeWorkoutName.bind(this);
+        this.onChangeDate = this.onChangeDate.bind(this);
+        this.onSubmitWorkout = this.onSubmitWorkout.bind(this);
+    }
 
-    const onSubmitWorkout = e => {
+    componentDidMount() {
+        axios.get('http://localhost:5000/user', { withCredentials: true })
+            .then(res => this.setState(prevState => ({
+                ...prevState, user: res.data.email
+            })))
+            .catch((error) => console.log(error))
+    }
+
+    onChangeWorkoutName(e) {
+        this.setState(prevState => ({...prevState, workout: {...prevState.workout, name: e.target.value}}))
+    }
+
+    onChangeDate(date) {
+        this.setState(prevState => ({...prevState, workout: {...prevState.workout, date: date}}))
+    }
+
+    onSubmitWorkout(e) {
         e.preventDefault();
 
+        axios.get('http://localhost:5000/user', { withCredentials: true })
+            .then(res => console.log(res.data.email));
+
         const newWorkout = {
-            name: workout.name,
-            date: workout.date,
+            user: this.state.user,
+            name: this.state.workout.name,
+            date: this.state.workout.date,
         }
 
         console.log(newWorkout);
 
-        axios.post('http://localhost:5000/workouts/add', workout)
+        axios.post('http://localhost:5000/workouts/add', newWorkout)
             .then(res => console.log(res.data));
 
-        setWorkout({name: '', date: new Date(), exercises: []})
+        this.setState(prevState => ({...prevState, workout: {name: '', date: new Date(), exercises: []}}))
 
         window.location = '/workout-tracker'
     }
 
-    return (
-        <div className="edit-box">
-            <WorkoutForm
-                type="Add"
-                workout={workout}
-                onChangeName={onChangeWorkoutName}
-                onSubmit={onSubmitWorkout}
-                onChangeDate={onChangeDate}
-            />
-        </div>
-    )
+    render() {
+        return (
+            <div className="edit-box">
+                <WorkoutForm
+                    type="Add"
+                    workout={this.state.workout}
+                    onChangeName={this.onChangeWorkoutName}
+                    onSubmit={this.onSubmitWorkout}
+                    onChangeDate={this.onChangeDate}
+                />
+            </div>
+        )
+    }
 }
 
 export default AddWorkout;

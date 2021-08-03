@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import './Login.css';
 
 function SignUp() {
@@ -23,22 +24,12 @@ function SignUp() {
     const onSubmit = e => {
         e.preventDefault();
 
-        console.log(user)
+        console.log(user);
 
-        // const newExercise = {
-        //     name: exercise.name,
-        //     description: exercise.description,
-        // }
-
-        // console.log(newExercise);
-
-        // axios.post('http://localhost:5000/workouts/editExercise/' + props.match.params.workoutID + "/" + props.match.params.exerciseID, newExercise)
-        //     .then(res => console.log(res.data))
-        //     .catch((error) => {
-        //         console.log(error);
-        //     })
-
-        // window.location = '/workout/' + props.match.params.workoutID
+        axios.post('http://localhost:5000/signup', user, { withCredentials: true })
+            .then(res => console.log(res.data));
+        
+        // window.location = '/login';
     }
 
     return (

@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 let Exercise = require('../models/exercise.model');
 
 const workoutSchema = new Schema({
+    user: {type: String, required: true},
     name: {type: String, required: true},
     date: {type: Date, required: true},
     exercises: [Exercise.schema],
