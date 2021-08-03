@@ -49,7 +49,7 @@
     color: black;
 }
 
-#exploreBox {
+.exploreBox {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -123,6 +123,24 @@
 
 .exploreCardText:hover {
     color: #3f8efc;
+}
+
+#learnMore {
+    height: 90vh;
+    background: #E5ECF4;
+}
+
+.showcase {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+}
+
+.showcase img {
+    padding: 20px;
+    width: 700px;
+    border: 1px solid #3f8efc;
 }
 
 @media screen and (max-width: 974px) {
