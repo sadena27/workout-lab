@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { BsList, BsX } from 'react-icons/bs';
 import './Navbar.css';
+import logo from './workout-lab-logo.png';
 
 function Navbar() {
     const [toggled, toggle] = useState(false);
@@ -34,7 +35,7 @@ function Navbar() {
                 {toggleIcon}
             </button>
             <Link to="/" onClick={() => toggle(false)}>
-                <img src="workout-lab-logo.png" alt="Workout Lab Logo" className="navbar-logo"/>
+                <img src={logo} alt="Workout Lab Logo" className="navbar-logo"/>
             </Link>
             <div className={toggled ? "navbar-menu" : "navbar-pages"}>
                 <Link
