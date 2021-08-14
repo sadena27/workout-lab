@@ -1,7 +1,5 @@
 # Workout Lab
 
-View this web application at [https://www.workoutlab.live](https://www.workoutlab.live).
-
 ### Running in development
 1. Create a MongoDB database with two collections: users and workouts.
 2. Run `npm install` to install the dependencies.
